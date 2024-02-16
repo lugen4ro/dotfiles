@@ -1,0 +1,7 @@
+[user]
+	email = 54658759+lugen4ro@users.noreply.github.com
+	name = lugen4ro
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
