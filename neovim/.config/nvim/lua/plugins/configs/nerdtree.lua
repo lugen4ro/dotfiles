@@ -1,0 +1,74 @@
+-- vim.cmd [[
+-- " let g:webdevicons_conceal_nerdtree_brackets = 0
+-- " let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+-- ]]
+
+-- This does unfortunately NOT work for me...
+-- vim.g.webdevicons_conceal_nerdtree_brackets = 1
+
+-- vim.g.WebDevIconsUnicodeDecorateFolderNodes = 1
+
+-- -- Overwrite color scheme
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "nerdtree",
+-- 	desc = "",
+-- 	callback = function()
+--         print("hi nerd")
+--
+--         -- call NERDTreeHighlightFile('lua', 'blue', 'none', '#3366FF', '#151515')
+--         vim.cmd([[ highlight lua ctermbg=none ctermfg=yellow guibg=none guifg=none]])
+--         vim.api.nvim_set_hl(0, "lua", { ctermbg = 0, fg = '#f55151', bg='' })
+--
+--
+--         -- ---------- Telescope ----------
+--         -- -- Color for matches that are found while typing in Telescope
+--         -- vim.api.nvim_set_hl(0, 'TelescopeMatching', { ctermbg = 0, fg = '#fab387', bg='' })
+--         --
+--         --
+--         --
+--         -- -- Color for filenames in the results of telescope
+--         -- vim.api.nvim_set_hl(0, 'TelescopeFileMatch', { ctermbg = 0, fg = '#89dceb', bg='' })
+--         --
+--         -- ---------- DAP ----------
+--         -- vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#f55151', bg='#31353f' })
+--         -- vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { ctermbg = 0, fg = '#f79b4a', bg='#31353f' })
+--         -- vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg='#31353f' })
+--         -- vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#98c379', bg='#31353f' })
+--     end
+-- })
+
+--
+-- function NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+--     exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+--     exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+-- end
+--
+--
+-- vim.cmd([[
+-- " NERDTrees File highlighting
+-- function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+--  exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+--  exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+-- endfunction
+--
+-- call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+-- call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+-- call NERDTreeHighlightFile('lua', 'blue', 'none', '#3366FF', '#151515')
+-- call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+-- call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+-- call NERDTreeHighlightFile('css', 'Red', 'none', 'Red', '#151515')
+-- call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+-- call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+-- call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+-- call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+-- call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+-- call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+-- call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+-- call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+--
+-- ]])
