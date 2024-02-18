@@ -56,3 +56,4 @@ there is no need to do all of these to recreate this environment.
   - https://medium.com/codex/setting-up-regular-automatic-backup-of-your-windows-subsystem-for-linux-wsl2-data-using-task-b36d2b2519dd
 - install clang for C++23
   - https://ubuntuhandbook.org/index.php/2023/09/how-to-install-clang-17-or-16-in-ubuntu-22-04-20-04/
+- Install deno
