@@ -8,6 +8,15 @@ Sections
 - Collaboration using Git & GitHub
 - Rewriting history
 
+## Basics
+
+Git objects are
+
+- Commits
+- Blobs (Files)
+- Trees (Directories)
+- Tags
+
 ## Creating Snapshots
 
 ### Initializing a repository
@@ -81,6 +90,7 @@ git show 921a2ff # Shows the given commit
 git show HEAD # Shows the last commit
 git show HEAD~2 # Two steps before the last commit
 git show HEAD:file.js # Shows the version of file.js stored in the last commit
+git ls-tree HEAD # Shows all files in commit pointed to by HEAD
 ```
 
 ### Unstaging files (undoing git add)

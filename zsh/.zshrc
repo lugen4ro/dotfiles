@@ -146,10 +146,15 @@ alias src-rc="source ~/.zshrc"
 
 # Tidbits file
 alias cd-tid="cd ~/tidbits/"
-alias vi-tid="vi ~/tidbits.md"
+alias vi-tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
 
 # dotfiles
 alias cd-dot="cd ~/dotfiles/"
+alias vi-dot="vi --cmd 'cd ~/dotfiles/' ."
+
+# Keymap for editing neovim configurations
+alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
+alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
 
 # Open windows file explorer
 alias open="explorer.exe ."
@@ -181,8 +186,6 @@ vi () {
 alias ..='cd ..'
 alias ...='cd ../..'
 
-# Keymap for editing neovim configurations
-alias nv="cd ${HOME}/.config/nvim/ && vi ."
 
 
 ### For keyring to use credentials such that we can use the leetcode nvim plugin

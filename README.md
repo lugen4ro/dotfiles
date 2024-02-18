@@ -41,6 +41,7 @@ there is no need to do all of these to recreate this environment.
   - setup remote repository
     - `git remote add origin git@github.com:gen4ro/nvim.git`
     - `git push -u origin main` # -u is short for --set-upstream which makes it remember so we only have to do "git push" or "git pull"
+  - Install gitkraken on WSL2 --> https://www.gitkraken.com/blog/wsl2-and-gitkraken-client#download-install
 - tmux
   - came already installed
   - install tpm (tmux plugin manager)
