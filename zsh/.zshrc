@@ -141,11 +141,15 @@ PATH=$PATH:$HOME/.local/bin
 
 ########## Quick access aliases
 # Alias to easily edit and source this file
-alias rc="vi ~/.zshrc"
-alias src="source ~/.zshrc"
+alias vi-rc="vi ~/.zshrc"
+alias src-rc="source ~/.zshrc"
 
 # Tidbits file
-alias tid="vi ~/tidbits.md"
+alias cd-tid="cd ~/tidbits/"
+alias vi-tid="vi ~/tidbits.md"
+
+# dotfiles
+alias cd-dot="cd ~/dotfiles/"
 
 # Open windows file explorer
 alias open="explorer.exe ."
