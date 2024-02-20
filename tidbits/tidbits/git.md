@@ -17,6 +17,13 @@ Git objects are
 - Trees (Directories)
 - Tags
 
+Available commands
+
+- git reset: Reset HEAD to the specified state (specify working dir / staging area state with soft,mixed,hard)
+- git revert: Add a new commit(s) that revert previous commit(s)
+- git reflog: Show history of a pointer (Chagnes made by checkout, reset, commit, merge...)
+- git clean: Remove untracked files
+
 ## Creating Snapshots
 
 ### Initializing a repository
@@ -205,6 +212,8 @@ git tag v1.0 # Tags the last commit as v1.0
 git tag v1.0 5e7a828 # Tags an earlier commit
 git tag # Lists all the tags
 git tag -d v1.0 # Deletes the given tag
+git tag -a v1.1 -m "Can annotate the tag with this message"
+git tag -n # Show tags and their messages (By default it's the commit message)
 ```
 
 ## Branching & Merging
@@ -217,6 +226,7 @@ git checkout bugfix # Switches to the bugfix branch
 git switch bugfix # Same as the above
 git switch -C bugfix # Creates and switches
 git branch -d bugfix # Deletes the bugfix branch
+git branch -m bugfix bufix/signup-form # Rename branch
 ```
 
 ### Comparing branches
@@ -228,8 +238,11 @@ git diff master..bugfix # Shows the summary of changes
 
 ### Stashing
 
+When switching branches while having modification, to keep those modifications, we stash and store them temporarily.
+
 ```
 git stash push -m “New tax rules” # Creates a new stash
+git stash --all # Stash all files including new untracked files
 git stash list # Lists all the stashes
 git stash show stash@{1} # Shows the given stash
 git stash show 1 # shortcut for stash@{1}
@@ -240,11 +253,29 @@ git stash clear # Deletes all the stashes
 
 ### Merging
 
+Two types of merges
+
+- Fast-forward merge (if branches have not diverged, one parent merge)
+- 3-way merge (if branches have diverged, two parent merge)
+
 ```
 git merge bugfix # Merges the bugfix branch into the current branch
 git merge --no-ff bugfix # Creates a merge commit even if FF is possible
-git merge --squash bugfix # Performs a squash merge
+
+git config ff no # Disables ff merges for current repository
+git config --global ff no # Disables ff merges for all repositories
+git config --global merge.tool p4merge # Settings the global merge tool
+git config --global mergetool.p4merge.path "C:\...." # Setting the path to the tool
+git config --global mergetool.keepBackup false # disables mergetool from creating backupfile by default
+
+git merge --squash bugfix # Performs a squash merge (combines multiple changes into one linear commit)
 git merge --abort # Aborts the merge
+```
+
+### Undoing a merge commit
+
+```
+git revert -m 1 HEAD # Adds a new commit undoing the changes. Reverts to parent 1 which is the one on the same branch
 ```
 
 ### Viewing the merged branches
@@ -256,11 +287,16 @@ git branch --no-merged # Shows the unmerged branches
 
 ### Rebasing
 
+Only use with fully local branches.
+Change the base of the branch to make a fast-forward merge
+
 ```
 git rebase master # Changes the base of the current branch
 ```
 
 ### Cherry picking
+
+Cherry pick commits from the branch to merge to master
 
 ```
 git cherry-pick dad47ed # Applies the given commit on the current branch
@@ -281,6 +317,7 @@ git fetch origin master # Fetches master from origin
 git fetch origin # Fetches all objects from origin
 git fetch # Shortcut for “git fetch origin”
 git pull # Fetch + merge
+git pull --rebase # Ends up with linear history
 git push origin master # Pushes master to origin
 git push # Shortcut for “git push origin master”
 ```
@@ -304,9 +341,11 @@ git push -d origin bugfix # Removes bugfix from origin
 ### Managing remotes
 
 ```
-git remote # Shows remote repos
-git remote add upstream url # Adds a new remote called upstream
-git remote rm upstream # Remotes upstream
+git remote -v # Shows remote repos
+git remote add upstream <url_here> # Adds a new remote called upstream (this name is often used for the base repository when forking)
+git remote rename upstream base # Renaming a remote repository
+git remote rm upstream # Removes upstream
+git remote prune origin # Prunes remote repositories (Not automatically deleted with pull?)
 ```
 
 ## Rewriting History
@@ -314,7 +353,7 @@ git remote rm upstream # Remotes upstream
 ### Undoing commits
 
 ```
-git reset --soft HEAD^ # Removes the last commit, keeps changed staged
+git reset --soft HEAD^ # Removes the last commit, keeps changes staged
 git reset --mixed HEAD^ # Unstages the changes as well
 git reset --hard HEAD^ # Discards local changes
 ```
@@ -323,11 +362,13 @@ git reset --hard HEAD^ # Discards local changes
 
 ```
 git revert 72856ea # Reverts the given commit
-git revert HEAD~3.. # Reverts the last three commits
-git revert --no-commit HEAD~3..
+git revert HEAD~3.. # Reverts the last three commits (HEAD~3 itself will not be reverted)
+git revert --no-commit HEAD~3.. # Revert without commit first, then use --continue to add in one commit
 ```
 
 ### Recovering lost commits
+
+Show history of a pointer
 
 ```
 git reflog # Shows the history of HEAD
@@ -341,6 +382,8 @@ git commit --amend
 ```
 
 ### Interactive rebasing
+
+Specify Commit before the first one we want to change.
 
 ```
 git rebase -i HEAD~5
