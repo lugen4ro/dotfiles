@@ -270,6 +270,7 @@ local plugins = {
                 "jsonls", -- json
                 "html", -- html
                 "cssls", -- css
+                "tailwindcss",
                 -- "emmet_language_server", -- HTML CSS
             },
 

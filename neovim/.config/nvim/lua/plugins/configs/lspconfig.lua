@@ -200,15 +200,17 @@ mason_lspconfig.setup({
         --     })
         -- end,
         --
-        -- css = function()
-        --     lspconfig.css.setup({
-        --         filetypes = {
-        --             "css",
-        --             "scss",
-        --             "html",
-        --         },
-        --     })
-        -- end,
+
+        -- Ignore "Unkown at rules" warning for @tailwind
+        cssls = function()
+            lspconfig.cssls.setup({
+                settings = {
+                    css = { validate = true, lint = { unknownAtRules = "ignore" } },
+                    scss = { validate = true, lint = { unknownAtRules = "ignore" } },
+                    less = { validate = true, lint = { unknownAtRules = "ignore" } },
+                },
+            })
+        end,
     },
 })
 
