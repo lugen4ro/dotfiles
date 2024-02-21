@@ -271,6 +271,7 @@ local plugins = {
                 "html", -- html
                 "cssls", -- css
                 "tailwindcss",
+                "prismals",
                 -- "emmet_language_server", -- HTML CSS
             },
 
