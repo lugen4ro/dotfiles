@@ -281,6 +281,27 @@ local plugins = {
         },
     },
 
+    -- Not working as is. Incorporate when refactoring
+    -- {
+    --     "glepnir/lspsaga.nvim",
+    --     config = function()
+    --         local saga = require("lspsaga")
+    --         saga.init_lsp_saga({
+    --             server_filetype_map = {
+    --                 typescript = "typescript",
+    --             },
+    --         })
+    --
+    --         local opts = { noremap = true, silent = true }
+    --         vim.keymap.set("n", "<C-j>", "<Cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+    --         vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
+    --         vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
+    --         vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
+    --         vim.keymap.set("n", "gp", "<Cmd>Lspsaga preview_definition<CR>", opts)
+    --         vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
+    --     end,
+    -- },
+
     -- Telescope: Fuzzy finder plugin and so much more
     {
         "nvim-telescope/telescope.nvim",
@@ -333,6 +354,7 @@ local plugins = {
             { "hrsh7th/cmp-nvim-lua" },
             { "hrsh7th/cmp-nvim-lsp" },
             { "hrsh7th/cmp-cmdline" },
+            { "hrsh7th/cmp-nvim-lsp-signature-help" },
             { "VonHeikemen/lsp-zero.nvim" },
             { "folke/neodev.nvim" }, -- autocompletion for vim.api, vim.opt kind of stuff
             { "onsails/lspkind.nvim" }, -- adds small pictograms to use with lsp

@@ -293,7 +293,8 @@ cmp.setup({
             -- variable_names, function_names etc. below the root directory (not only current file)
             { name = "nvim_lsp", priority = 3, max_item_count = 20 },
 
-            --{name = "nvim_lua"},
+            -- Display signatures with the current parameter emphasized
+            { name = "nvim_lsp_signature_help" },
 
             -- Auto-complete any path (you don't have to exit vi or use command to check path)
             { name = "path", priority = 3 },
