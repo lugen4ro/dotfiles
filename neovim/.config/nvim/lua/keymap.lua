@@ -406,6 +406,8 @@ vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "[Fugitive] Blame" 
 -------------------- LSP --------------------
 -- Defined in lspconfig configuration
 
+-------------------- Typescript-tools --------------------
+
 -------------------- Conform --------------------
 -- Format
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
