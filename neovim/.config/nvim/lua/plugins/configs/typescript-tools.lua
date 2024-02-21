@@ -1,27 +1,27 @@
 local tst = require("typescript-tools").setup({
+    on_attach = function()
+        vim.keymap.set(
+            "n",
+            "<leader>to",
+            ":TSToolsOrganizeImports<CR>",
+            { desc = "[TST] Organize imports (Sort & remove unused)" }
+        )
+        vim.keymap.set("n", "<leader>tm", ":TSToolsAddMissingImports<CR>", { desc = "[TST] Add missing imports" })
+        vim.keymap.set("n", "<leader>ta", ":TSToolsFixAll<CR>", { desc = "[TST] Fix all fixable errors" })
+        vim.keymap.set(
+            "n",
+            "<leader>tr",
+            ":TSToolsRenameFile<CR>",
+            { desc = "[TST] Rename current file and apply changes to connected files" }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>tf",
+            ":TSToolsFileReferences<CR>",
+            { desc = "[TST] Find references to current file" }
+        )
+    end,
     settings = {
-        on_attach = function()
-            vim.keymap.set(
-                "n",
-                "<leader>to",
-                ":TSToolsOrganizeImports<CR>",
-                { desc = "[TST] Organize imports (Sort & remove unused)" }
-            )
-            vim.keymap.set("n", "<leader>tm", ":TSToolsAddMissingImports<CR>", { desc = "[TST] Add missing imports" })
-            vim.keymap.set("n", "<leader>ta", ":TSToolsFixAll<CR>", { desc = "[TST] Fix all fixable errors" })
-            vim.keymap.set(
-                "n",
-                "<leader>tr",
-                ":TSToolsRenameFile<CR>",
-                { desc = "[TST] Rename current file and apply changes to connected files" }
-            )
-            vim.keymap.set(
-                "n",
-                "<leader>tf",
-                ":TSToolsFileReferences<CR>",
-                { desc = "[TST] Find references to current file" }
-            )
-        end,
 
         --     tsserver_plugins = {
         --         -- for TypeScript v4.9+
