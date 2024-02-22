@@ -62,8 +62,8 @@ vim.keymap.set("v", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipbo
 vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
 
 -- delete without copying
--- vim.keymap.set("n", "<leader>d", "\"_d", {desc=""})
--- vim.keymap.set("v", "<leader>d", "\"_d", {desc=""})
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "" })
+vim.keymap.set("v", "<leader>d", '"_d', { desc = "" })
 
 -- ctrl-c is almost same as <Esc> but there are some slight differences, so map to Escape
 vim.keymap.set("n", "<C-c>", "<Esc>", { remap = true, desc = "[Basic] Ctrl-c -> Esc" }) -- so that <Esc> gets remapped in to disable highlight
@@ -408,6 +408,10 @@ vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "[Fugitive] Blame" 
 
 -------------------- Typescript-tools --------------------
 
+-- Comment out in JSX --> Implemented with Comment.nvim functionality which existed as a branch...
+-- vim.keymap.set("n", "<leader>tc", "mz_i{/* <Esc>A */}<Esc>`zlllll")
+-- vim.keymap.set("v", "<leader>tc", "<Esc>`<i{/* <Esc>`>a*/}<Esc>")
+
 -------------------- Conform --------------------
 -- Format
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
@@ -464,7 +468,7 @@ vim.keymap.set("n", "<F2>", vim.cmd.DapStepOver, { desc = "[Debug] Step over" })
 vim.keymap.set("n", "<F3>", vim.cmd.DapStepOut, { desc = "[Debug] Step out" })
 
 -- Open Floating Element
-vim.keymap.set("n", "<leader>df", require("dapui").float_element, { desc = "[Debug] Visual - Open float element" })
+-- vim.keymap.set("n", "<leader>df", require("dapui").float_element, { desc = "[Debug] Visual - Open float element" })
 
 -- Evaluate Expression
 vim.keymap.set("n", "<C-p>", require("dapui").eval, { desc = "[Debug] Visual - Evaluate expression" })

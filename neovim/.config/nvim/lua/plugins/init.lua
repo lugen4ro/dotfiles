@@ -443,8 +443,14 @@ local plugins = {
     -- comment plugin
     {
         "numToStr/Comment.nvim",
+        dependencies = {
+            -- Context dependend comments for files with multiple different comment styles based on section
+            "JoosepAlviste/nvim-ts-context-commentstring",
+        },
         config = function()
-            require("Comment").setup()
+            require("Comment").setup({
+                pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+            })
         end,
     },
 
@@ -485,6 +491,20 @@ local plugins = {
         end,
         -- opts = require("plugins.configs.whichkey"),
         opts = {},
+    },
+
+    -- Show register content
+    {
+        "tversteeg/registers.nvim",
+        cmd = "Registers",
+        keys = {
+            { '"', mode = { "n", "v" } },
+            { "<C-R>", mode = "i" },
+        },
+        name = "registers",
+        config = function()
+            require("plugins.configs.registers")
+        end,
     },
 
     -- C++ manual in vim
