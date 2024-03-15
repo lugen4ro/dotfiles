@@ -6,6 +6,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+# plugin: zsh-autocomplete
+# zsh source ~/Repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -18,6 +23,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -81,7 +87,12 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 zstyle ':omz:plugins:nvm' lazy yes
 
-plugins=(git nvm)
+
+
+# Oh my zsh plugins
+# plugins=(git nvm)
+# plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
+plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -147,6 +158,7 @@ alias src-rc="source ~/.zshrc"
 # Tidbits file
 alias cd-tid="cd ~/tidbits/"
 alias vi-tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
+alias tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
 
 # dotfiles
 alias cd-dot="cd ~/dotfiles/"

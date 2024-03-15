@@ -7,6 +7,8 @@ local telescope = require("telescope")
 -- TODO: Make it possible to go up in workind directory to search below parent as well for file finder & live grep
 -- file finder has a change directory functionality, but I don't quite know what it means or how to use it...
 
+-- TODO: for picker help_tags customize the results so that they show the filename. Currently hard to distinguish if it is a plugin doc or not
+
 local actions = require("telescope.actions")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")

@@ -104,3 +104,17 @@ In my case, they are located at `~/.config/tmux/plugins/`
 - tpm: tmux plugin manager
 - tmux-sensible: "A set of tmux options that should be acceptable to everyone."
 - catppuccin/tmux: This does not have its own directory, but is installed in `~/.config/tmux/plugins/tmux/`
+
+## Node.js
+
+### nvm (Node Version Manager)
+
+Install and manage multiple versions of node.js
+
+Usage
+
+```
+nvm list  # list all versions
+nvm install --lts  # install latest LTS version
+nvm alias default 20.11.1  # Set default version
+```

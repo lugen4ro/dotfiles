@@ -105,6 +105,7 @@ local plugins = {
             require("colorizer").setup({
                 "lua",
                 "javascript",
+                "typescript",
                 css = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
             })
         end,
@@ -224,6 +225,12 @@ local plugins = {
         end,
     },
 
+    -- Annotation Toolkit
+    {
+        "danymat/neogen",
+        config = true,
+    },
+
     -------------------- LSP --------------------
     {
         "neovim/nvim-lspconfig",
@@ -264,7 +271,7 @@ local plugins = {
             -- list of available lsp: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
             ensure_installed = {
                 -- "tsserver", -- TypeScript & JavaScript -- Using typescript-tools instead
-                -- "eslint", -- TypeScript & JavaScript -- Version 4.8.0 --> from 2017 too old. Newest is 9.0.0
+                "eslint", -- TypeScript & JavaScript -- Version 4.8.0 --> from 2017 too old. Newest is 9.0.0
                 "lua_ls", -- Lua
                 "pyright", -- Python
                 "clangd", -- C & C++

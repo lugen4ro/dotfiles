@@ -15,16 +15,18 @@ conform.setup({
         html = { "prettier" },
         yaml = { "prettier" },
         json = { "prettier" },
+        jsonc = { "prettier" }, -- tsconfig.json is actually jsonc
         markdown = { "prettier" },
         graphql = { "prettier" },
         cpp = { "clang_format" },
+        -- prisma = { "prettier" },
     },
 
     -- If this is set, Conform will run the formatter on save.
     -- It will pass the table to conform.format().
     -- This can also be a function that returns the table.
     format_on_save = {
-        lsp_fallback = false, -- We only want the above formatters so false
+        lsp_fallback = true, -- Yes. For example using prisma-lsp formatter for prisma
         async = false,
         timeout_ms = 500,
     },

@@ -291,10 +291,11 @@ cmp.setup({
 
             -- Uses LSP to provide auto-completions for
             -- variable_names, function_names etc. below the root directory (not only current file)
-            { name = "nvim_lsp", priority = 3, max_item_count = 20 },
+            -- { name = "nvim_lsp", priority = 3, max_item_count = 20 },
+            { name = "nvim_lsp", priority = 8, max_item_count = 20 },
 
             -- Display signatures with the current parameter emphasized
-            { name = "nvim_lsp_signature_help" },
+            -- { name = "nvim_lsp_signature_help" },
 
             -- Auto-complete any path (you don't have to exit vi or use command to check path)
             { name = "path", priority = 3 },
@@ -503,3 +504,6 @@ cmp.setup.cmdline(":", {
         { name = "cmdline" },
     }),
 })
+
+-- Neogen for adding annotations
+require("neogen").setup({ snippet_engine = "luasnip" })
