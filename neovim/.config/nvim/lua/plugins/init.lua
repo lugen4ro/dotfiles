@@ -107,6 +107,7 @@ local plugins = {
                 "javascript",
                 "typescript",
                 css = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                scss = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
             })
         end,
     },
@@ -230,6 +231,8 @@ local plugins = {
         "danymat/neogen",
         config = true,
     },
+
+    { "iuchim/zenhan" },
 
     -------------------- LSP --------------------
     {

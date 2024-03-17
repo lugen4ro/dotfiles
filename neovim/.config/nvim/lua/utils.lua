@@ -1,5 +1,22 @@
 local M = {}
 
+--------------------------------- General ---------------------------------
+
+--- Split string by character
+---@param str string string to split
+---@param sep string seperator
+---@return table tab Table of parts
+M.split = function(str, sep)
+    if sep == nil then
+        sep = "%s"
+    end
+    local tab = {}
+    for part in string.gmatch(str, "([^" .. sep .. "]+)") do
+        table.insert(tab, part)
+    end
+    return tab
+end
+
 --------------------------------- Filesystem ---------------------------------
 
 -- Check if directory exists

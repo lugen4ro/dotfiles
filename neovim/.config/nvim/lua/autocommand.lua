@@ -80,6 +80,47 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- Yank highlighted text and keep cursor at its position
 vim.keymap.set("v", "y", "ygv<Esc>")
 
+--------- Auto change IME when leaving insert mode (have to set environamental variable zenhan in .zshrc to point to zenhan.exe)
+-- Japanese
+vim.api.nvim_create_autocmd("InsertLeave", {
+    pattern = "*",
+    desc = "",
+    command = "call system('${zenhan} 0')",
+})
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+    pattern = "*",
+    desc = "",
+    command = "call system('${zenhan} 0')",
+})
+
+-- [Conform] format on save, except for C++
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+        -- Example args content
+        -- {
+        --   buf = 11,
+        --   event = "BufWritePre",
+        --   file = "lua/autocommand.lua",
+        --   id = 189,
+        --   match = "/home/gen4ro/dotfiles/neovim/.config/nvim/lua/autocommand.lua"
+        -- }
+
+        -- Split current buffer file path by . and get extension
+        local utils = require("utils")
+        local parts = utils.split(args.file, ".")
+        local extension = parts[#parts]
+
+        -- Do nothing for c++
+        if extension == "cpp" then
+            return
+        end
+
+        -- Format
+        require("conform").format({ bufnr = args.buf })
+    end,
+})
+
 -------------------- Custom commands --------------------
 
 -- AtCoder - Save contest problem in appropriate folder with appropriate name
@@ -126,6 +167,19 @@ end, {
 vim.api.nvim_create_user_command("Cdb", "cd %:p:h", {
     desc = "Change directory to current buffer's directory",
 })
+
+-- Command for formatting with confrom
+vim.api.nvim_create_user_command("Format", function(args)
+    local range = nil
+    if args.count ~= -1 then
+        local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+        range = {
+            start = { args.line1, 0 },
+            ["end"] = { args.line2, end_line:len() },
+        }
+    end
+    require("conform").format({ async = true, lsp_fallback = true, range = range })
+end, { range = true })
 
 -- Conceal level only for neorg buffer
 -- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {

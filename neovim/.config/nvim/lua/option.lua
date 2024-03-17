@@ -86,9 +86,10 @@ vim.opt.incsearch = true
 -- after end of file continue searching from top of file
 vim.opt.wrapscan = true
 
---
---
 ---------- Other  ----------
+
+-- Yank to the clipboard by default (use normal yank paste workflow between nvim in different tmux windows!)
+vim.opt.clipboard = "unnamed"
 
 -- to recognaize files that have @ in the filename
 -- https://vi.stackexchange.com/questions/22423/in-file-names-and-gf-go-to-file
@@ -112,6 +113,12 @@ vim.diagnostic.config({ virtual_text = false })
 
 -- recognize python3_host_prog to pass checkhealth
 vim.g.python3_host_prog = "/usr/bin/python3"
+
+-- Japanese
+-- local shell = "/usr/bin/zsh --login"
+-- let &shell='/usr/bin/bash --login'
+-- autocmd InsertLeave * :call system('${zenhan} 0')
+-- autocmd CmdlineLeave * :call system('${zenhan} 0')
 
 -------------------- Custom Command (To use manually in command mode) --------------------
 

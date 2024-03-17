@@ -129,6 +129,11 @@ source $ZSH/oh-my-zsh.sh
 
 # ----------------------------------- gen4ro ----------------------------------- #
 
+# For neovim, setting IME with zenhan
+# export zenhan="C:\Users\nakam\Documents\nvim"
+export zenhan="/mnt/c/Users/nakam/Documents/nvim/zenhan.exe"
+
+
 # ---------- DENO ---------- #
 export DENO_INSTALL="/home/gen4ro/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"

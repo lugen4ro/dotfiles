@@ -176,6 +176,9 @@ vim.keymap.set(
 vim.keymap.set("n", "<Home>", ":cprev<Enter>zz", { silent = true })
 vim.keymap.set("n", "<End>", ":cnext<Enter>zz", { silent = true })
 
+-- When exiting Japanese language mode, also exit insert mode
+-- vim.keymap.set("i", "<Esc>", "<F14><Esc>", { silent = true })
+
 -------------------- AtCoder --------------------
 
 -- Copy Buffer
@@ -368,11 +371,11 @@ end, { desc = "[NERDTree] Toggle panel" })
 -------------------- Noice  --------------------
 vim.keymap.set("n", "<leader>nl", function()
     require("noice").cmd("last")
-end)
+end, { desc = "[Nofity] Last message" })
 
 vim.keymap.set("n", "<leader>nh", function()
     require("noice").cmd("history")
-end)
+end, { desc = "[Nofity] History of messages" })
 
 vim.keymap.set("n", "<leader>nd", function()
     require("notify").dismiss()
