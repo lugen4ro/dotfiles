@@ -121,6 +121,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- -- Yank everything to windows system clipboard as well (!!! yanks also on delete to system clipboard...)
+-- vim.api.nvim_create_autocmd("TextYankPost", {
+--     pattern = "*",
+--     desc = "Yank to windows system clipboard",
+--
+--     command = "call system('/mnt/c/windows/system32/clip.exe ',@\")",
+-- })
+
 -------------------- Custom commands --------------------
 
 -- AtCoder - Save contest problem in appropriate folder with appropriate name
