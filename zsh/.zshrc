@@ -153,7 +153,7 @@ set -o ignoreeof
 # Put symbolic links here
 PATH=$PATH:$HOME/.local/bin
 
-# ---------- aliases ---------- #
+# -------------------- aliases -------------------- #
 
 ########## Quick access aliases
 # Alias to easily edit and source this file
@@ -205,12 +205,24 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 
+# -------------------- WSL -------------------- #
+export PATH=$PATH:/mnt/c/Windows/System32
 
-### For keyring to use credentials such that we can use the leetcode nvim plugin
-# wait for systemd --user dbus session and unlock keyrin
-sleep 1
-eval $(echo -n db | gnome-keyring-daemon --unlock --replace 2> /dev/null)
+# Add VSCODE to path so you can use it with "code <directory / file>"
+export PATH=$PATH:"/mnt/c/Users/nakam/AppData/Local/Programs/Microsoft VS Code/bin/"
 
+# Add explorer.exe to PATH so we can use the "open" command
+export PATH=$PATH:"/mnt/c/Windows/"
+# # Since the "open" command didn't work for me, specify the location of the explorer application directly
+# function explorer () {
+#     if [[ $# -eq 0 ]]; then
+#         /mnt/c/Windows/explorer.exe .
+#     elif [[ $# -eq 1 ]]; then
+#         /mnt/c/Windows/explorer.exe $1
+#     else
+#         echo "Only 0 or 1 argument is supported."
+#     fi
+# }
 
 # nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
