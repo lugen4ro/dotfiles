@@ -41,7 +41,7 @@ require("color")
 require("keymap")
 
 -- load any vimscript
---vim.cmd("source " .. vim.fn.stdpath("config") .. "/lua/vimscript.vim")
+vim.cmd("source " .. vim.fn.stdpath("config") .. "/lua/vimscript.vim")
 
 -- TODO: Backup all dotfiles not only nvim
 -- TODO: When moving to other page with ctrl-s, center view automatically when at bottom of buffer

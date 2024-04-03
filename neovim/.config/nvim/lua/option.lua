@@ -89,7 +89,7 @@ vim.opt.wrapscan = true
 ---------- Other  ----------
 
 -- Yank to the clipboard by default (use normal yank paste workflow between nvim in different tmux windows!)
--- vim.opt.clipboard = "unnamed"
+vim.opt.clipboard = "unnamed"
 
 -- to recognaize files that have @ in the filename
 -- https://vi.stackexchange.com/questions/22423/in-file-names-and-gf-go-to-file

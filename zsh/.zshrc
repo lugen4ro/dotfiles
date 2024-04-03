@@ -170,8 +170,8 @@ alias cd-dot="cd ~/dotfiles/"
 alias vi-dot="vi --cmd 'cd ~/dotfiles/' ."
 
 # Keymap for editing neovim configurations
-alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
-alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
+# alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
+# alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
 alias nv="cd ~/dotfiles/neovim/.config/nvim/ && vi lua/plugins/init.lua"
 
 # Open windows file explorer

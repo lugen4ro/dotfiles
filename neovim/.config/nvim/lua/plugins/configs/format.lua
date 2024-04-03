@@ -19,16 +19,15 @@ conform.setup({
         markdown = { "prettier" },
         graphql = { "prettier" },
         cpp = { "clang_format" },
-        -- prisma = { "prettier" },
     },
 
     -- SET THIS WITH CUSTOM AUTOCOMMAND
     -- If this is set, Conform will run the formatter on save.
     -- It will pass the table to conform.format().
     -- This can also be a function that returns the table.
-    -- format_on_save = {
-    --     lsp_fallback = true, -- Yes. For example using prisma-lsp formatter for prisma
-    --     async = false,
-    --     timeout_ms = 500,
-    -- },
+    format_on_save = {
+        lsp_fallback = true, -- Yes. For example using prisma-lsp formatter for prisma
+        async = false,
+        timeout_ms = 500,
+    },
 })
