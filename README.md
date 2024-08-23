@@ -45,3 +45,18 @@ brew install stow
 ## To Do
 
 - Research whether you can make stow create symlinks for all files, not making use of directory symlinks
+
+Add some of the following to auto-install
+
+```
+$ brew list
+==> Formulae
+autoconf                gh                      libuv                   luv                     nodebrew                pyenv                   tmux                    unibilium
+ca-certificates         gitmux                  libvterm                m4                      openssl@3               readline                tmux-mem-cpu-load       utf8proc
+cmake                   go-task                 lpeg                    msgpack                 pcre2                   ripgrep                 tpm                     xz
+fzf                     goenv                   lua                     ncurses                 pkg-config              stow                    tree                    zsh-autocomplete
+gettext                 libevent                luajit                  neovim                  powerlevel10k           switchaudio-osx         tree-sitter
+
+==> Casks
+apptivate               google-chrome           keycastr                microsoft-auto-update   microsoft-office        notion                  slack                   temurin                 zoom
+```

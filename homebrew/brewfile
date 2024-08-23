@@ -4,12 +4,18 @@
 #   - You can check where a package is installed with "brew info <package>"
 #   - In my case (Mac) packages were installed under /opt/homebrew/Cellar/
 
+
+# zsh
+brew "zsh"
+# cask "font-jetbrains-mono-nerd-font" # Didn't work well
+
 # neovim
 brew "neovim"
 
 # tmux
 brew "tmux"
-brew "tpm"
+brew "tpm" # tmux plugin manager
 
-# utility
-brew "tree"
+# Utility
+brew "tree" # Tree view of files
+brew "trash-cli" # Prevent accidental deletion
