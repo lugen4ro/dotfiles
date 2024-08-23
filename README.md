@@ -35,6 +35,14 @@ brew install go-task/tap/go-task
 brew install stow
 ```
 
+4. Setup with Task
+
+```
+git clone https://github.com/lugen4ro/dotfiles ~/.dotfiles && \
+cd ~/.dotfiles && \
+task setup
+```
+
 ## How to make updates
 
 - Always edit/create a file under .dotfiles
