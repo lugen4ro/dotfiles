@@ -9,6 +9,10 @@
 brew "zsh"
 # cask "font-jetbrains-mono-nerd-font" # Didn't work well
 
+
+# git 
+brew "gh"
+
 # neovim
 brew "neovim"
 
