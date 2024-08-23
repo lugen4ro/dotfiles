@@ -1,0 +1,10 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: "Install packages with homebrew"
+    cmds:
+      - brew bundle --file "./homebrew/brewfile"
+
+  clean:
+    desc: "Cleanup"

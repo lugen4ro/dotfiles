@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: Setup neovim
+    cmds:
+      - mkdir -p ~/.config/nvim/
+      - stow -R -t ~/.config/nvim/ --ignore="Taskfile.yaml" nvim
+
+  clean:
+    desc: Cleanup

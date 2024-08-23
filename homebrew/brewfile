@@ -1,0 +1,15 @@
+# write packages to install here
+#
+# - Where are the packages installed ? 
+#   - You can check where a package is installed with "brew info <package>"
+#   - In my case (Mac) packages were installed under /opt/homebrew/Cellar/
+
+# neovim
+brew "neovim"
+
+# tmux
+brew "tmux"
+brew "tpm"
+
+# utility
+brew "tree"

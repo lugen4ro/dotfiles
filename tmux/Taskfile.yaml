@@ -1,0 +1,17 @@
+version: "3"
+
+tasks:
+  setup:
+    desc: Setup tmux
+    cmds:
+      - mkdir -p ~/.config/tmux
+      - stow -R -t ~/.config/tmux/ --ignore="Taskfile.yaml" tmux
+      # Below setup tmux and install tmux plugins
+      - tmux new -d -s __noop >/dev/null 2>&1 || true
+      # Specify where to install plugins
+      - tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "~/.config/tmux/plugins"
+      - ~/.config/tmux/plugins/tpm/bin/install_plugins || true
+      - tmux kill-session -t __noop >/dev/null 2>&1 || true
+
+  clean:
+    desc: Cleanup

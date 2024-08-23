@@ -1,0 +1,26 @@
+[user]
+	email = 54658759+lugen4ro@users.noreply.github.com
+	name = lugen4ro
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[alias]
+    # show commits in graph mode
+	lg = log --oneline --graph
+    # show current status in short mode
+	st = status -s
+    # show all branch names of branches you've used recently
+    br = for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/
+[diff]
+	tool = nvimdiff
+[difftool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+

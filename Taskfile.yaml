@@ -1,0 +1,22 @@
+version: "3"
+
+includes:
+  tmux:
+    taskfile: ./tmux/Taskfile.yaml
+  homebrew:
+    taskfile: ./homebrew/Taskfile.yaml
+  nvim:
+    taskfile: ./nvim/Taskfile.yaml
+  zsh:
+    taskfile: ./zsh/Taskfile.yaml
+  git:
+    taskfile: ./git/Taskfile.yaml
+
+tasks:
+  setup:
+    cmds:
+      - task: homebrew:setup
+      - task: tmux:setup
+      - task: nvim:setup
+      - task: zsh:setup
+      - task: git:setup
