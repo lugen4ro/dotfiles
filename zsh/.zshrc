@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# source colorscheme for zsh syntax highlighting
+# source colorscheme for zsh syntax highlighting (source before loadig the zsh-syntax-highlighting plugin)
 source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
 
