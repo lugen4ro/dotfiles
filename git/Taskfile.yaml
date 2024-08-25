@@ -3,14 +3,10 @@ version: "3"
 tasks:
   setup:
     cmds:
-      - stow -R -t ~ --ignore="Taskfile.yaml" git/.gitconfig
-      - stow -R -t ~/.config/gh --ignore="Taskfile.yaml" git/gh
+      - stow -R -t ~ --ignore="Taskfile.yaml" git
     generates:
       - ~/.gitconfig
-      - ~/.config/gh/hosts.yml
-      - ~/.config/gh/config.yml
 
   clean:
     cmds:
       - stow -t ~ -D git
-      - stow -t ~/.config/gh -D git/gh

@@ -180,7 +180,7 @@ alias vi-dot="vi --cmd 'cd ~/dotfiles/' ."
 # alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
 # alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
 # alias nv="cd ~/dotfiles/neovim/.config/nvim/ && vi lua/plugins/init.lua"
-alias nv="cd ~/.config/nvim/ && vi lua/plugins/init.lua"
+alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugins/init.lua"
 
 # Open windows file explorer
 alias open="explorer.exe ."
@@ -197,15 +197,15 @@ alias treeignore="rg --files | tree --fromfile"
 
 # vi
 # open file if specified, else open current directory in netrw
-alias nvim="/Users/lukasgenshiro.nakamura/.local/share/nvim/nvim-macos-arm64/bin/nvim"
-vi () {
-    # -z is true if the string is null
-    if [[ -z $1 ]]; then
-        nvim
-    else
-        nvim "$@"
-    fi
-}
+# alias nvim="/Users/lukasgenshiro.nakamura/.local/share/nvim/nvim-macos-arm64/bin/nvim"
+# vi () {
+#     # -z is true if the string is null
+#     if [[ -z $1 ]]; then
+#         nvim
+#     else
+#         nvim "$@"
+#     fi
+# }
 
 
 # Fast maneuvering
@@ -266,3 +266,15 @@ export EDITOR="nvim"
 alias front="cd ~/code/devenv-maker/onecareer2nd/frontend/"
 alias back="cd ~/code/devenv-maker/onecareer2nd/backend/"
 
+
+# --------------------
+# Neovim
+# --------------------
+alias vi="nvim"
+
+
+# Add home brew to path on Linux (for mac is available by default)
+# on Mac uname would return "Darwin"
+if [[ "$(uname)" == "Linux" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi

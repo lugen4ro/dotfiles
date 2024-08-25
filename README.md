@@ -5,19 +5,21 @@
   - Mac
   - WSL2 Ubuntu22
 
-## Requirements
+## Tools used for setup
 
 - git
-- [Homebrew](https://brew.sh/)
-  - To install packages
 - [Task](https://taskfile.dev/)
   - To manage installation and cleaning up
+- [Homebrew](https://brew.sh/)
+  - To install packages
 - [GNU Stow](https://www.gnu.org/software/stow/)
   - To create symlinks to centrally managed dotfiles
 
 ## Setup
 
 1. Install brew
+
+Install with the below command and follow the directives printed.
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -29,13 +31,7 @@
 brew install go-task/tap/go-task
 ```
 
-3. install GNU Stow
-
-```
-brew install stow
-```
-
-4. Setup with Task
+3. Setup dotfiles with Task
 
 ```
 git clone https://github.com/lugen4ro/dotfiles ~/.dotfiles && \
@@ -49,6 +45,8 @@ task setup
   - If you edit a file directly, it might be a file that is under a symlink directory making the changes not propagate to the git repo
   - If you create a new file, that file will not be managed by this git repo
 - Then execute `task setup`
+
+## How to delete
 
 ## To Do
 

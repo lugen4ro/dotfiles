@@ -9,3 +9,6 @@ tasks:
 
   clean:
     desc: Cleanup
+    cmds:
+      - stow -t ~/.config/nvim -D nvim
+      - "[ -d ~/.config/nvim ] && rmdir ~/.config/nvim"

@@ -2,13 +2,17 @@
 #
 # - Where are the packages installed ? 
 #   - You can check where a package is installed with "brew info <package>"
-#   - In my case (Mac) packages were installed under /opt/homebrew/Cellar/
+#   - In my case 
+#       - Mac       -> /opt/homebrew/Cellar/
+#       - Ubuntu 22 -> /home/linuxbrew/.linuxbrew/Cellar/
 
+
+# stow
+brew "stow"
 
 # zsh
 brew "zsh"
 # cask "font-jetbrains-mono-nerd-font" # Didn't work well
-
 
 # git 
 brew "gh"

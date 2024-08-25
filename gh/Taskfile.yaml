@@ -1,0 +1,14 @@
+version: "3"
+
+tasks:
+  setup:
+    cmds:
+      - mkdir -p ~/.config/gh
+      - stow -R -t ~/.config/gh --ignore="Taskfile.yaml" gh
+    generates:
+      - ~/.config/gh/hosts.yml
+      - ~/.config/gh/config.yml
+
+  clean:
+    cmds:
+      - stow -t ~/.config/gh -D git/gh
