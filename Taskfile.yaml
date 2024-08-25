@@ -13,6 +13,8 @@ includes:
     taskfile: ./gh/Taskfile.yaml
   nvim:
     taskfile: ./nvim/Taskfile.yaml
+  ssh:
+    taskfile: ./ssh/Taskfile.yaml
 
 tasks:
   setup:
@@ -23,3 +25,4 @@ tasks:
       - task: git:setup
       - task: gh:setup
       - task: nvim:setup
+      - task: ssh:setup

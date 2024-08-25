@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+  setup:
+    cmds:
+      - mkdir -p ~/.ssh
+      - stow -R -t ~/.ssh --ignore="Taskfile.yaml" ssh
+    generates:
+      - ~/.ssh/config
+
+  clean:
+    cmds:
+      - stow -t ~ -D ssh
