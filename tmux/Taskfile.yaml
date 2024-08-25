@@ -4,14 +4,27 @@ tasks:
   setup:
     desc: Setup tmux
     cmds:
-      # - mkdir -p ~/.config/tmux
+      - task: tpm:install
       - stow -R -t ~ --ignore="Taskfile.yaml" tmux
-      # Below setup tmux and install tmux plugins
       - tmux new -d -s __noop >/dev/null 2>&1 || true
-      # Specify where to install plugins
       - tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "~/.tmux/plugins"
       - ~/.tmux/plugins/tpm/bin/install_plugins || true
       - tmux kill-session -t __noop >/dev/null 2>&1 || true
 
   clean:
     desc: Cleanup
+    cmds:
+      - task: tpm:clean
+      - stow -t ~ -D tmux
+
+  tpm:install:
+    desc: Install tpm
+    cmds:
+      - |
+        if [ ! -d ~/.tmux/plugins/tpm ]; then
+          git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        fi
+
+  tpm:clean:
+    cmds:
+      - rm -rf ~/.tmux/plugins/tpm

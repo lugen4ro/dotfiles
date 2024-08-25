@@ -22,7 +22,6 @@ brew "neovim"
 
 # tmux
 brew "tmux"
-brew "tpm" # tmux plugin manager
 
 # Utility
 brew "tree" # Tree view of files
