@@ -1,1 +1,6 @@
 homebrew/brewfile.lock.json
+
+# Never include any secret files
+*secret*
+*id_ecdsa*
+*id_rsa*
