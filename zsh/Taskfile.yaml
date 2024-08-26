@@ -5,9 +5,9 @@ tasks:
     cmds:
       - stow -R -t ~ --ignore="Taskfile.yaml" zsh
       - task: syntax-highlighting
-    generates:
-      - ~/.zshrc
-      - ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+    status:
+      - test -f ~/.zshrc
+      - test -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 
   clean:
     cmds:
@@ -17,3 +17,6 @@ tasks:
     cmds:
       - mkdir -p ~/.zsh
       - curl -o ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh https://raw.githubusercontent.com/catppuccin/zsh-syntax-highlighting/main/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+    status:
+      - test -d ~/.zsh
+      - test -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
