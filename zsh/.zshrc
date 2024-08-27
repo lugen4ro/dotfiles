@@ -263,8 +263,10 @@ eval "$(pyenv init --path)"
 # set editor for github cli tool gh
 export EDITOR="nvim"
 
+# Aliases for work
 alias front="cd ~/code/devenv-maker/onecareer2nd/frontend/"
 alias back="cd ~/code/devenv-maker/onecareer2nd/backend/"
+alias tmp="cd ~/code/oc2-tmp/onecareer2nd/frontend/"
 
 
 # --------------------
