@@ -1,4 +1,4 @@
-homebrew/brewfile.lock.json
+*/brewfile.lock.json
 
 # Never include any secret files
 *secret*
