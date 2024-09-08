@@ -16,6 +16,9 @@ brew "zsh"
 
 # git 
 brew "gh"
+brew "pre-commit" # Required for gitleaks pre commit hook
+brew "gitleaks" # Secrets checking
+brew "git-delta"
 
 # neovim
 brew "neovim"
@@ -28,6 +31,7 @@ brew "tree" # Tree view of files
 brew "trash-cli" # Prevent accidental deletion
 brew "fzf"
 brew "goenv"
+brew "bat" # Alternative for "cat" command
 
 # terraform
 tap "hashicorp/tap"

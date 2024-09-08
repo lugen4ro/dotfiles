@@ -4,9 +4,18 @@ tasks:
   setup:
     cmds:
       - stow -R -t ~ --ignore="Taskfile.yaml" git
+      - pre-commit install # Enable gitleaks pre-commit hook for this dotfiles repo
+      - task: setup-delta
     generates:
       - ~/.gitconfig
 
   clean:
     cmds:
       - stow -t ~ -D git
+
+  setup-delta:
+    cmds:
+      - mkdir -p ~/.config/delta/themes
+      - wget -P ~/.config/delta/themes "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
+    status:
+      - test -f  ~/.config/delta/themes/catppuccin.gitconfig

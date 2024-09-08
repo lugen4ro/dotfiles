@@ -164,7 +164,6 @@ PATH=$PATH:$HOME/.local/bin
 
 ########## Quick access aliases
 # Alias to easily edit and source this file
-alias vi-rc="vi ~/.zshrc"
 alias src-rc="source ~/.zshrc"
 
 # Tidbits file
@@ -173,8 +172,7 @@ alias vi-tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
 alias tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
 
 # dotfiles
-alias cd-dot="cd ~/dotfiles/"
-alias vi-dot="vi --cmd 'cd ~/dotfiles/' ."
+alias dot="cd ~/.dotfiles && vi Taskfile.yaml"
 
 # Keymap for editing neovim configurations
 # alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
@@ -280,3 +278,28 @@ alias vi="nvim"
 if [[ "$(uname)" == "Linux" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# "bat" tgheme' 
+# export BAT_THEME="Catppuccin Mocha"
+
+
+
+# --------------------
+# Delta 
+# --------------------
+export DELTA_FEATURES=+side-by-side # activate by default
+alias dt='delta-toggle'
+function delta-toggle () {
+    if [[ "$DELTA_FEATURES" == *"+side-by-side"* ]]; then
+        # If "side-by-side" is already enabled, turn it off
+        export DELTA_FEATURES=$(echo "$DELTA_FEATURES" | sed 's/+side-by-side//')
+    else
+        # If "side-by-side" is not enabled, turn it on
+        if [[ -z "$DELTA_FEATURES" ]]; then
+            export DELTA_FEATURES="+side-by-side"
+        else
+            export DELTA_FEATURES="$DELTA_FEATURES +side-by-side"
+        fi
+    fi
+}
+

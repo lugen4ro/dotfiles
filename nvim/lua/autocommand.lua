@@ -180,6 +180,11 @@ vim.api.nvim_create_user_command("Cdb", "cd %:p:h", {
 	desc = "Change directory to current buffer's directory",
 })
 
+-- Delta
+vim.api.nvim_create_user_command("Delta", "tab Git -c pager.diff=delta diff", {
+	desc = "Execute delta to show all diffs in current repo",
+})
+
 -- Conceal level only for neorg buffer
 -- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
 --   pattern = {"*.norg"},

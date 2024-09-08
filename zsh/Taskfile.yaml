@@ -5,9 +5,7 @@ tasks:
     cmds:
       - stow -R -t ~ --ignore="Taskfile.yaml" zsh
       - task: syntax-highlighting
-    status:
-      - test -f ~/.zshrc
-      - test -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+      - task: setup-bat
 
   clean:
     cmds:
@@ -20,3 +18,15 @@ tasks:
     status:
       - test -d ~/.zsh
       - test -f ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+
+  setup-bat:
+    cmds:
+      - mkdir -p "$(bat --config-dir)/themes"
+      - wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+      - bat cache --build
+    status:
+      - test -f "$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme"
+
+  clean-bat:
+    cmds:
+      - rm -r "$(bat --config-dir)/themes"
