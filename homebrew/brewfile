@@ -28,3 +28,7 @@ brew "tree" # Tree view of files
 brew "trash-cli" # Prevent accidental deletion
 brew "fzf"
 brew "goenv"
+
+# terraform
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
