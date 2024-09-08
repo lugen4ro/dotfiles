@@ -38,16 +38,16 @@ vim.keymap.set("n", "<A-w>", ":bd<CR>", { desc = "[Basic] Delete (close) current
 
 -- when searching, and going through each occurance with n/N, keep curosr in middle of screen
 vim.keymap.set(
-    "n",
-    "n",
-    "nzzzv",
-    { desc = "[Basic] Keep cursor in middle of screen when going through search results" }
+	"n",
+	"n",
+	"nzzzv",
+	{ desc = "[Basic] Keep cursor in middle of screen when going through search results" }
 )
 vim.keymap.set(
-    "n",
-    "N",
-    "Nzzzv",
-    { desc = "[Basic] Keep cursor in middle of screen when going through search results" }
+	"n",
+	"N",
+	"Nzzzv",
+	{ desc = "[Basic] Keep cursor in middle of screen when going through search results" }
 )
 
 -- when pasting over something in visual mode, keep the current paste value
@@ -85,16 +85,16 @@ vim.keymap.set("x", "<C-c>", "<Esc>", { remap = true, desc = "[Basic] Ctrl-c -> 
 -- In command mode <C-r><C-w> gets you the word under the cursor
 -- \<\> is probably so that we can execute the ctrl key presses instead of having literal text
 vim.keymap.set(
-    "n",
-    "<leader>ca",
-    [[:.,$s/\<<C-r><C-w>\>//gI<Left><Left><Left>]],
-    { desc = "[Basic] Substitute word under cursor globally" }
+	"n",
+	"<leader>ca",
+	[[:.,$s/\<<C-r><C-w>\>//gI<Left><Left><Left>]],
+	{ desc = "[Basic] Substitute word under cursor globally" }
 )
 vim.keymap.set(
-    "n",
-    "<leader>cc",
-    [[:.,$s/\<<C-r><C-w>\>//gc<Left><Left><Left>]],
-    { desc = "[Basic] Substitute word under cursor globally" }
+	"n",
+	"<leader>cc",
+	[[:.,$s/\<<C-r><C-w>\>//gc<Left><Left><Left>]],
+	{ desc = "[Basic] Substitute word under cursor globally" }
 )
 vim.keymap.set("v", "<C-r>", [["hy:%s/<C-r>h//gc<left><left><left>]], { desc = "[Basic] Substitute selected text" })
 
@@ -149,31 +149,30 @@ vim.keymap.set("n", "dl", "jddko", { desc = "[Basic] Go into insert mode at corr
 
 -- Open web links from vim with gx, from inside WSL2 (map gx to gx so i can see this entry in telescope keymaps)
 -- Open URL with gx
-vim.g.netrw_browsex_viewer =
-"cmd.exe /C start" -- Stopped working with Noice. Seems noice uses vim.ui.open instead of netrw
+vim.g.netrw_browsex_viewer = "cmd.exe /C start" -- Stopped working with Noice. Seems noice uses vim.ui.open instead of netrw
 -- The following works with noice by overriding vim.ui.open
 -- This is for WSL2
 local open_url_wsl2 = function(url)
-    -- print("silent !cmd.exe /C start " .. url)
-    -- print("Opening --> " .. url)
-    -- Replace # with \# because this command replace # with the current file for some unkown reason
-    url = string.gsub(url, "#", "\\#")
-    vim.cmd("silent !cmd.exe /C start " .. url)
+	-- print("silent !cmd.exe /C start " .. url)
+	-- print("Opening --> " .. url)
+	-- Replace # with \# because this command replace # with the current file for some unkown reason
+	url = string.gsub(url, "#", "\\#")
+	vim.cmd("silent !cmd.exe /C start " .. url)
 end
 vim.ui.open = open_url_wsl2
 
 ---- Copy vim messages to unnamed register "
 vim.keymap.set(
-    "n",
-    "<leader>ml",
-    [[:let @"=execute("1messages")<CR>]],
-    { desc = '[VIM] Copy last message to the unnamed register "' }
+	"n",
+	"<leader>ml",
+	[[:let @"=execute("1messages")<CR>]],
+	{ desc = '[VIM] Copy last message to the unnamed register "' }
 )
 vim.keymap.set(
-    "n",
-    "<leader>ma",
-    [[:let @"=execute("messages")<CR>]],
-    { desc = '[VIM] Copy all messages to the unnamed register "' }
+	"n",
+	"<leader>ma",
+	[[:let @"=execute("messages")<CR>]],
+	{ desc = '[VIM] Copy all messages to the unnamed register "' }
 )
 
 -- Quickfix navigation
@@ -194,21 +193,21 @@ vim.keymap.set("n", "<End>", ":cnext<Enter>zz", { silent = true })
 -- Run AtCoder
 -- Run on inputs for AtCoder (only do for wsl2 ubuntu not mac os)
 if vim.loop.os_uname().sysname ~= "Darwin" then
-    vim.keymap.set("n", "<C-e>", function()
-        local cur_file = vim.fn.expand("%:p")
-        -- local cur_file = vim.api.nvim_buf_get_name(0) -- seems to also work
-        if cur_file == "/home/gen4ro/code/dsa/cpp/atcoder/answer.cpp" then
-            vim.cmd("w")
-            vim.cmd("silent !/home/gen4ro/code/dsa/cpp/atcoder/run.sh")
-        elseif cur_file == "/home/gen4ro/code/dsa/python/atcoder/answer.py" then
-            vim.cmd("w")
-            vim.cmd("silent !/home/gen4ro/code/dsa/python/atcoder/run.sh")
-        else
-            print(
-                "Current file is not /home/gen4ro/code/dsa/atcoder/python/answer.py OR /home/gen4ro/code/dsa/atcoder/cpp/answer.cpp"
-            )
-        end
-    end, { desc = "[AtCoder] Run answer for AtCoder on inputs (Python / C++)" })
+	vim.keymap.set("n", "<C-e>", function()
+		local cur_file = vim.fn.expand("%:p")
+		-- local cur_file = vim.api.nvim_buf_get_name(0) -- seems to also work
+		if cur_file == "/home/gen4ro/code/dsa/cpp/atcoder/answer.cpp" then
+			vim.cmd("w")
+			vim.cmd("silent !/home/gen4ro/code/dsa/cpp/atcoder/run.sh")
+		elseif cur_file == "/home/gen4ro/code/dsa/python/atcoder/answer.py" then
+			vim.cmd("w")
+			vim.cmd("silent !/home/gen4ro/code/dsa/python/atcoder/run.sh")
+		else
+			print(
+				"Current file is not /home/gen4ro/code/dsa/atcoder/python/answer.py OR /home/gen4ro/code/dsa/atcoder/cpp/answer.cpp"
+			)
+		end
+	end, { desc = "[AtCoder] Run answer for AtCoder on inputs (Python / C++)" })
 end
 
 -----------------------------------------------------------------------------------------------
@@ -221,35 +220,35 @@ vim.keymap.set("n", "<leader>e", ":RunCode<CR>", { desc = "[CodeRunner] Run code
 -------------------- Comment --------------------
 -- Copy line and comment out
 vim.keymap.set("n", "gcy", function()
-    -- gcc probably is noremap so ordinary keymap didn't work
-    -- there is a thing called nvim_feedkeys, but it didn't work like I expected so I just resorted to this vim solution
-    -- also mark current location in line and stay there
-    vim.cmd([[:execute "normal mzyygccjP`zj"]])
+	-- gcc probably is noremap so ordinary keymap didn't work
+	-- there is a thing called nvim_feedkeys, but it didn't work like I expected so I just resorted to this vim solution
+	-- also mark current location in line and stay there
+	vim.cmd([[:execute "normal mzyygccjP`zj"]])
 end, { desc = "[Comment] Yank and comment out" })
 
 -- Copy visual select and comment out
 vim.keymap.set("v", "gy", function()
-    -- gcc probably is noremap so ordinary keymap didn't work
-    -- there is a thing called nvim_feedkeys, but it didn't work like I expected so I just resorted to this vim solution
-    -- also mark current location in line and stay there
-    vim.cmd([[:execute "normal mzyygccjP`zj"]])
+	-- gcc probably is noremap so ordinary keymap didn't work
+	-- there is a thing called nvim_feedkeys, but it didn't work like I expected so I just resorted to this vim solution
+	-- also mark current location in line and stay there
+	vim.cmd([[:execute "normal mzyygccjP`zj"]])
 end, { desc = "[Comment] Yank and comment out" })
 
 ------------------- Trouble  -------------------
 vim.keymap.set("n", "<leader>xx", function()
-    require("trouble").toggle()
+	require("trouble").toggle()
 end, { desc = "[Trouble] Toggle Trouble window" })
 vim.keymap.set("n", "<leader>xw", function()
-    require("trouble").toggle("workspace_diagnostics")
+	require("trouble").toggle("workspace_diagnostics")
 end, { desc = "[Trouble] Show worksapce diagnostics" })
 vim.keymap.set("n", "<leader>xd", function()
-    require("trouble").toggle("document_diagnostics")
+	require("trouble").toggle("document_diagnostics")
 end, { desc = "[Trouble] Document diagnostics" })
 vim.keymap.set("n", "<leader>xq", function()
-    require("trouble").toggle("quickfix")
+	require("trouble").toggle("quickfix")
 end, { desc = "[Trouble] Quickfix" })
 vim.keymap.set("n", "<leader>xl", function()
-    require("trouble").toggle("loclist")
+	require("trouble").toggle("loclist")
 end, { desc = "[Trouble] Loclist" })
 -- vim.keymap.set("n", "gR", function() require("trouble").toggle("lsp_references") end, {desc=""})
 
@@ -257,24 +256,24 @@ end, { desc = "[Trouble] Loclist" })
 vim.g.diagnostics_active = false
 
 local function toggle_diagnostics()
-    if vim.g.diagnostics_active then
-        vim.g.diagnostics_active = false
-        vim.diagnostic.config({ virtual_text = false })
-    else
-        vim.g.diagnostics_active = true
-        vim.diagnostic.config({ virtual_text = true })
-    end
+	if vim.g.diagnostics_active then
+		vim.g.diagnostics_active = false
+		vim.diagnostic.config({ virtual_text = false })
+	else
+		vim.g.diagnostics_active = true
+		vim.diagnostic.config({ virtual_text = true })
+	end
 end
 vim.keymap.set("n", "<C-t>", toggle_diagnostics, { desc = "[Diagnostics] Toggle diagnostics on and off" })
 
 -- Apply quickfix (Apply code action to current line)
 local function quickfix()
-    vim.lsp.buf.code_action({
-        filter = function(a)
-            return a.isPreferred
-        end,
-        apply = true,
-    })
+	vim.lsp.buf.code_action({
+		filter = function(a)
+			return a.isPreferred
+		end,
+		apply = true,
+	})
 end
 vim.keymap.set("n", "<leader>qf", quickfix, { desc = "[Diagnostics] Apply quickfix to current line (code action)" })
 
@@ -286,19 +285,19 @@ vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[Telescope] Sear
 
 -- search files including dot files (hidden)
 vim.keymap.set("n", "<leader>sd", function()
-    builtin.find_files({ hidden = true, no_ignore = true })
+	builtin.find_files({ hidden = true, no_ignore = true })
 end, { desc = "[Telescope] Search files" })
 
 -- `require("telescope.builtin").find_files({hidden=true, layout_config={prompt_position="top"}})`
 
 -- search with grep
 vim.keymap.set("n", "<leader>sg", function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") })
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, { desc = "[Telescope] Search with grep" })
 
 -- search for string fuzzy style
 vim.keymap.set("n", "<leader>sl", function()
-    builtin.live_grep()
+	builtin.live_grep()
 end, { desc = "[Telescope] Search string (live grep)" })
 
 -- search git
@@ -307,8 +306,8 @@ end, { desc = "[Telescope] Search string (live grep)" })
 
 -- search previously opened files (history) in normal mode
 vim.keymap.set("n", "<C-s>", function()
-    builtin.oldfiles()
-    -- vim.api.nvim_input("<Esc>")
+	builtin.oldfiles()
+	-- vim.api.nvim_input("<Esc>")
 end, { desc = "[Telescope] Search file (recently used)" })
 
 -- search help
@@ -316,22 +315,22 @@ vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[Telescope] Searc
 
 -- open list of buffers in normal mode
 vim.keymap.set("n", "<leader>sb", function()
-    builtin.buffers()
-    vim.api.nvim_input("<Esc>")
+	builtin.buffers()
+	vim.api.nvim_input("<Esc>")
 end, { desc = "[Telescope] Search buffers" })
 
 -- builtin.builtin
 -- Show all builtin pickers
 vim.keymap.set("n", "<leader>st", function()
-    builtin.builtin({ include_extensions = true })
+	builtin.builtin({ include_extensions = true })
 end, { desc = "[Telescope] Search Telescope (open telescope options)" })
 
 -- open file browser (extension for telescope)
 vim.keymap.set(
-    "n",
-    "<leader>sv",
-    ":Telescope file_browser files=false<CR>",
-    { silent = true, desc = "[Telescope] Use Telescope file browser" }
+	"n",
+	"<leader>sv",
+	":Telescope file_browser files=false<CR>",
+	{ silent = true, desc = "[Telescope] Use Telescope file browser" }
 )
 
 -- open file browser (extension for telescope) -- Starting at current directory
@@ -340,10 +339,10 @@ vim.keymap.set(
 
 -- Open auto-session sessions in telescope
 vim.keymap.set(
-    "n",
-    "<leader>ss",
-    require("auto-session.session-lens").search_session,
-    { desc = "[Telescope] Search sessions (auto-session)" }
+	"n",
+	"<leader>ss",
+	require("auto-session.session-lens").search_session,
+	{ desc = "[Telescope] Search sessions (auto-session)" }
 )
 
 ------------------- Harpoon -------------------
@@ -369,7 +368,7 @@ vim.keymap.set(
 
 --vim.keymap.set("n", "<leader>n", function () vim.cmd("NERDTreeFocus") end, {desc=""})
 vim.keymap.set("n", "<C-n>", function()
-    vim.cmd("NERDTreeToggle")
+	vim.cmd("NERDTreeToggle")
 end, { desc = "[NERDTree] Toggle panel" })
 -- vim.keymap.set("n", "<leader>n", function()
 --     vim.cmd("NERDTreeFind")
@@ -377,15 +376,15 @@ end, { desc = "[NERDTree] Toggle panel" })
 
 -------------------- Noice  --------------------
 vim.keymap.set("n", "<leader>nl", function()
-    require("noice").cmd("last")
+	require("noice").cmd("last")
 end, { desc = "[Nofity] Last message" })
 
 vim.keymap.set("n", "<leader>nh", function()
-    require("noice").cmd("history")
+	require("noice").cmd("history")
 end, { desc = "[Nofity] History of messages" })
 
 vim.keymap.set("n", "<leader>nd", function()
-    require("notify").dismiss()
+	require("notify").dismiss()
 end, { desc = "[Nofity] Dismiss all notices" })
 
 -------------------- Undotree --------------------
@@ -425,11 +424,11 @@ vim.keymap.set("n", "<leader>gb", ":Git blame<CR>", { desc = "[Fugitive] Blame" 
 -------------------- Conform --------------------
 -- Format
 vim.keymap.set({ "n", "v" }, "<leader>f", function()
-    require("conform").format({
-        lsp_fallback = "false",
-        async = false,
-        timeout_ms = 500,
-    })
+	require("conform").format({
+		lsp_fallback = "false",
+		async = false,
+		timeout_ms = 500,
+	})
 end, { desc = "Format code with conform" })
 
 -------------------- Debugger [DAP] --------------------
@@ -442,10 +441,10 @@ vim.keymap.set("n", "<F4>", ":lua require('dap').restart()<CR>", { desc = "[Debu
 
 -- Terminate session & remove breakpoints
 vim.keymap.set(
-    "n",
-    "<F5>",
-    ":lua require('dap').terminate()<CR>:lua require('dap').clear_breakpoints()<CR>",
-    { desc = "[Debug] Terimantes debug session" }
+	"n",
+	"<F5>",
+	":lua require('dap').terminate()<CR>:lua require('dap').clear_breakpoints()<CR>",
+	{ desc = "[Debug] Terimantes debug session" }
 )
 
 -- Set breakpoint
@@ -455,18 +454,18 @@ vim.keymap.set("n", "<F9>", vim.cmd.DapToggleBreakpoint, { desc = "[Debug] Set b
 -- expressions can be written as simple expression or native expression
 -- here are the deets --> https://github.com/vadimcn/codelldb/blob/master/MANUAL.md#expressions
 vim.keymap.set(
-    "n",
-    "<F8>",
-    ":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-    { desc = "[Debug] Set conditional breakpoint" }
+	"n",
+	"<F8>",
+	":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
+	{ desc = "[Debug] Set conditional breakpoint" }
 )
 
 -- Set log point?
 vim.keymap.set(
-    "n",
-    "<F7>",
-    ":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-    { desc = "[Debug] Set log point" }
+	"n",
+	"<F7>",
+	":lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+	{ desc = "[Debug] Set log point" }
 )
 
 -- Clear Breakpoints

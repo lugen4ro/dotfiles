@@ -1,24 +1,24 @@
 local settings = {
 
-    -- Loads all default modules
-    ["core.defaults"] = {},
+	-- Loads all default modules
+	["core.defaults"] = {},
 
-    -- Conceals underlying text with replacement
-    ["core.concealer"] = {},
+	-- Conceals underlying text with replacement
+	["core.concealer"] = {},
 
-    -- Manages Neorg workspaces
-    ["core.dirman"] = {
-        config = {
-            workspaces = {
-                notes = "~/notes",
-            },
-            default_workspace = "notes",
-        },
-    },
+	-- Manages Neorg workspaces
+	["core.dirman"] = {
+		config = {
+			workspaces = {
+				notes = "~/notes",
+			},
+			default_workspace = "notes",
+		},
+	},
 
-    ["core.autocommands"] = {},
-    ["core.integrations.treesitter"] = {},
-    ["core.completion"] = { config = { engine = "nvim-cmp" } },
+	["core.autocommands"] = {},
+	["core.integrations.treesitter"] = {},
+	["core.completion"] = { config = { engine = "nvim-cmp" } },
 }
 
 require("neorg").setup({ load = settings })
