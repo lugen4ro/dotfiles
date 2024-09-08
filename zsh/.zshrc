@@ -163,28 +163,23 @@ PATH=$PATH:$HOME/.local/bin
 # -------------------- aliases -------------------- #
 
 ########## Quick access aliases
-# Alias to easily edit and source this file
-alias src-rc="source ~/.zshrc"
+alias rc="vi ~/.zshrc"
+alias src="source ~/.zshrc"
 
 # Tidbits file
 alias cd-tid="cd ~/tidbits/"
-alias vi-tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
-alias tid="vi --cmd 'cd ~/dotfiles/' ~/dotfiles/tidbits/tidbits/tidbits.md"
+alias vi-tid="vi --cmd 'cd ~/.dotfiles/' ~/.dotfiles/tidbits/tidbits/tidbits.md"
+alias tid="vi --cmd 'cd ~/.dotfiles/' ~/.dotfiles/tidbits/tidbits/tidbits.md"
 
 # dotfiles
 alias dot="cd ~/.dotfiles && vi Taskfile.yaml"
 
 # Keymap for editing neovim configurations
-# alias cd-nvim="cd ~/dotfiles/neovim/.config/nvim/"
 # alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
-# alias nv="cd ~/dotfiles/neovim/.config/nvim/ && vi lua/plugins/init.lua"
 alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugins/init.lua"
 
 # Open windows file explorer
 alias open="explorer.exe ."
-
-# Start browser sync in current directory and watch for changes in all files
-alias bs="browser-sync start --server --files * --no-notify"
 
 # ls alias
 alias l="ls -l"
@@ -193,63 +188,24 @@ alias la="ls -la"
 # tree without .gitignore files
 alias treeignore="rg --files | tree --fromfile"
 
-# vi
-# open file if specified, else open current directory in netrw
-# alias nvim="/Users/lukasgenshiro.nakamura/.local/share/nvim/nvim-macos-arm64/bin/nvim"
-# vi () {
-#     # -z is true if the string is null
-#     if [[ -z $1 ]]; then
-#         nvim
-#     else
-#         nvim "$@"
-#     fi
-# }
-
 
 # Fast maneuvering
 alias ..='cd ..'
 alias ...='cd ../..'
-
-
-# -------------------- WSL -------------------- #
-# export PATH=$PATH:/mnt/c/Windows/System32
-
-# Add VSCODE to path so you can use it with "code <directory / file>"
-# export PATH=$PATH:"/mnt/c/Users/nakam/AppData/Local/Programs/Microsoft VS Code/bin/"
-
-# Add explorer.exe to PATH so we can use the "open" command
-# export PATH=$PATH:"/mnt/c/Windows/"
-# # Since the "open" command didn't work for me, specify the location of the explorer application directly
-# function explorer () {
-#     if [[ $# -eq 0 ]]; then
-#         /mnt/c/Windows/explorer.exe .
-#     elif [[ $# -eq 1 ]]; then
-#         /mnt/c/Windows/explorer.exe $1
-#     else
-#         echo "Only 0 or 1 argument is supported."
-#     fi
-# }
 
 # nvm - node version manager
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-# Add golang to path
-# export PATH=$PATH:/usr/local/go/bin
-
 # golang for mac
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
 eval "$(goenv init -)"
 
-
 # drop linux cache command
 # sudo sh -c "echo 3 >'/proc/sys/vm/drop_caches' && swapoff -a && swapon -a"
 
-## custom by for 
-alias vi /Users/lukasgenshiro.nakamura/.local/bin/nvim-macos-arm64/bin/nvim
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 
@@ -279,9 +235,11 @@ if [[ "$(uname)" == "Linux" ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-# "bat" tgheme' 
-# export BAT_THEME="Catppuccin Mocha"
 
+# --------------------
+# bat
+# --------------------
+export BAT_THEME="Catppuccin Mocha"
 
 
 # --------------------
