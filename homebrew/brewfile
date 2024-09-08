@@ -29,7 +29,8 @@ brew "tmux"
 # Utility
 brew "tree" # Tree view of files
 brew "trash-cli" # Prevent accidental deletion
-brew "fzf"
+brew "fzf" # grep alternative
+brew "fd" # find alternative
 brew "goenv"
 brew "bat" # Alternative for "cat" command
 

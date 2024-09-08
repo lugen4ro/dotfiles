@@ -92,12 +92,9 @@ zstyle ':omz:plugins:nvm' lazy yes
 
 
 # Oh my zsh plugins
-# plugins=(git nvm)
-# plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting zsh-autocomplete)
-# plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting fast-syntax-highlighting)
-# plugins=(git nvm zsh-autosuggestions  fast-syntax-highlighting)
-# plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete)
 plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
+# TODO: zsh-autocomplete is nice for completing commands but too much clutter. Find a way that is not this intrusive
+# plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -150,12 +147,7 @@ then
     alias rm=trash-put
 fi
 
-# fuzzyfinder initializtion 
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh # windows
-source <(fzf --zsh) # mac
 
-# EOF (ctrl-d) does not exit the zsh
-set -o ignoreeof
 
 # Put symbolic links here
 PATH=$PATH:$HOME/.local/bin
@@ -261,3 +253,14 @@ function delta-toggle () {
     fi
 }
 
+
+# --------------------
+# fzf
+# --------------------
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
+alias gb="git branch | fzf | cut -c 3- | xargs git switch"
+export FZF_DEFAULT_COMMAND="fd . $HOME"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+set -o ignoreeof # accidental close prevention - EOF (ctrl-d) does not exit the zsh
