@@ -18,18 +18,11 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential "https://github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
-[credential "https://gist.github.com"]
-	helper = 
-	helper = !/home/linuxbrew/.linuxbrew/bin/gh auth git-credential
 [interactive]
 	; diffFilter = diff-so-fancy --patch
     diffFilter = delta --color-only
 [merge]
     conflictstyle = diff3
-
 [diff]
     colorMoved = default
 [include]
