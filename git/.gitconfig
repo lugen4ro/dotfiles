@@ -18,6 +18,9 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[push]
+    # by default push new branches to the default remote
+    autoSetupRemote = true
 [interactive]
 	; diffFilter = diff-so-fancy --patch
     diffFilter = delta --color-only

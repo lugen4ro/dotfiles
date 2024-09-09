@@ -345,6 +345,7 @@ local plugins = {
 				"prismals",
 				"gopls", -- go
 				"yamlls",
+				"eslint", -- ts, js
 				-- "emmet_language_server", -- HTML CSS
 				"terraformls",
 			},
