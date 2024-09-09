@@ -16,6 +16,7 @@ tasks:
   setup-delta:
     cmds:
       - mkdir -p ~/.config/delta/themes
-      - wget -P ~/.config/delta/themes "https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig"
+      - curl -o ~/.config/delta/themes/catppuccin.gitconfig https://raw.githubusercontent.com/catppuccin/delta/main/catppuccin.gitconfig
+
     status:
       - test -f  ~/.config/delta/themes/catppuccin.gitconfig

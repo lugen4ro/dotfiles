@@ -17,6 +17,11 @@
 
 ## Setup
 
+0. Setup terminal theme
+
+- iterm2: https://github.com/catppuccin/iterm
+- Windows Terminal: https://github.com/catppuccin/windows-terminal
+
 1. Install brew
 
 Install with the below command and follow the directives printed.

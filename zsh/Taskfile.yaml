@@ -22,7 +22,7 @@ tasks:
   setup-bat:
     cmds:
       - mkdir -p "$(bat --config-dir)/themes"
-      - wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme
+      - curl -o "$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme" https://raw.githubusercontent.com/catppuccin/bat/main/themes/Catppuccin%20Mocha.tmTheme
       - bat cache --build
     status:
       - test -f "$(bat --config-dir)/themes/Catppuccin Mocha.tmTheme"
