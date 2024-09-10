@@ -108,11 +108,28 @@ vim.opt.colorcolumn = "100"
 -- encoding
 vim.opt.encoding = "utf-8"
 
--- set diagnostic text by default
-vim.diagnostic.config({ virtual_text = false })
-
 -- recognize python3_host_prog to pass checkhealth
 vim.g.python3_host_prog = "/usr/bin/python3"
+
+-- Diagnostics
+vim.diagnostic.config({
+	virtual_text = {
+		source = true, -- Show source (e.g. Pyright etc.)
+		format = function(diagnostic)
+			if diagnostic.user_data and diagnostic.user_data.code then
+				return string.format("%s %s", diagnostic.user_data.code, diagnostic.message)
+			else
+				return diagnostic.message
+			end
+		end,
+	},
+	signs = true,
+	float = {
+		header = "Diagnostics",
+		source = true,
+		border = "rounded",
+	},
+})
 
 -- Japanese
 -- local shell = "/usr/bin/zsh --login"
