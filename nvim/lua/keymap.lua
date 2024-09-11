@@ -86,15 +86,15 @@ vim.keymap.set("x", "<C-c>", "<Esc>", { remap = true, desc = "[Basic] Ctrl-c -> 
 -- \<\> is probably so that we can execute the ctrl key presses instead of having literal text
 vim.keymap.set(
 	"n",
-	"<leader>ca",
+	"<leader>ra",
 	[[:.,$s/\<<C-r><C-w>\>//gI<Left><Left><Left>]],
-	{ desc = "[Basic] Substitute word under cursor globally" }
+	{ desc = "[Basic] Replace word under cursor globally (no check)" }
 )
 vim.keymap.set(
 	"n",
-	"<leader>cc",
+	"<leader>rc",
 	[[:.,$s/\<<C-r><C-w>\>//gc<Left><Left><Left>]],
-	{ desc = "[Basic] Substitute word under cursor globally" }
+	{ desc = "[Basic] Substitute word under cursor globally (with check)" }
 )
 vim.keymap.set("v", "<C-r>", [["hy:%s/<C-r>h//gc<left><left><left>]], { desc = "[Basic] Substitute selected text" })
 
@@ -182,7 +182,16 @@ vim.keymap.set("n", "<End>", ":cnext<Enter>zz", { silent = true })
 -- When exiting Japanese language mode, also exit insert mode
 -- vim.keymap.set("i", "<Esc>", "<F14><Esc>", { silent = true })
 
--------------------- AtCoder --------------------
+-------------------- Copy stuff --------------------
+vim.keymap.set(
+	"n",
+	"<leader>cf",
+	":CopyPath<Enter>",
+	{ desc = "[copy file path] Copy relative File path from git root (including git root)" }
+)
+vim.keymap.set("n", "<leader>ca", 'gg<S-v>G"+y<C-o>', { desc = "[copy all] Copy whole buffer to system clipboard" })
+
+------------------- AtCoder --------------------
 
 -- Copy Buffer
 -- Copy whole buffer into system clipboard and return to original cursor location
@@ -261,7 +270,25 @@ local function toggle_diagnostics()
 		vim.diagnostic.config({ virtual_text = false })
 	else
 		vim.g.diagnostics_active = true
-		vim.diagnostic.config({ virtual_text = true })
+		-- TODO: Same in options, so preferably put in 1 place
+		vim.diagnostic.config({
+			virtual_text = {
+				source = true, -- Show source (e.g. Pyright etc.)
+				format = function(diagnostic)
+					if diagnostic.user_data and diagnostic.user_data.code then
+						return string.format("%s %s", diagnostic.user_data.code, diagnostic.message)
+					else
+						return diagnostic.message
+					end
+				end,
+			},
+			signs = true,
+			float = {
+				header = "Diagnostics",
+				source = true,
+				border = "rounded",
+			},
+		})
 	end
 end
 vim.keymap.set("n", "<C-t>", toggle_diagnostics, { desc = "[Diagnostics] Toggle diagnostics on and off" })

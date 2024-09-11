@@ -16,7 +16,8 @@ conform.setup({
 	formatters_by_ft = {
 		vue = { "prettier" },
 		lua = { "stylua" }, -- cofigure in .stylua.toml file in project root directory
-		python = { "isort", "black" }, -- Conform will run multiple formatters sequentially
+		-- python = { "isort", "black" },
+		python = { "ruff_format" },
 		javascript = { "prettier" },
 		typescript = { "prettier" },
 		javascriptreact = { "prettier" },

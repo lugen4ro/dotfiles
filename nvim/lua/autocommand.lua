@@ -131,9 +131,29 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 
 -------------------- Custom commands --------------------
 
--- Copy current file path
-vim.api.nvim_create_user_command("CopyPath", "call setreg('+', expand('%:p'))", {})
-vim.api.nvim_create_user_command("CopyRelPath", "call setreg('+', expand('%'))", {})
+-- Copy path to file from git root, including git root (if no git repo, copy full path)
+vim.api.nvim_create_user_command("CopyPath", function()
+	-- Get the absolute path of the current file
+	local file_path = vim.fn.expand("%:p")
+	-- Get the Git repository root
+	local git_root_path = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+	print(git_root_path)
+
+	-- If we are not in a Git repo, default to full file path
+	if git_root_path == nil or git_root_path == "" then
+		vim.fn.setreg("+", file_path)
+		return
+	end
+
+	local git_root_name = git_root_path:match("([^/]+)$")
+
+	-- Get the relative path from the Git root (including git root)
+	local relative_path = file_path:sub(#git_root_path + 2)
+	local relative_path_including_git_root = git_root_name .. "/" .. relative_path
+
+	-- Copy the modified path to the clipboard (surround with `` for notion & slack formatting)
+	vim.fn.setreg("+", "`" .. relative_path_including_git_root .. "`")
+end, {})
 
 -- AtCoder - Save contest problem in appropriate folder with appropriate name
 -- Ex) :Con BC321 A - Increasing Subsequence ----> contest/BC321_A_-_Increasing_Subsequence.cpp

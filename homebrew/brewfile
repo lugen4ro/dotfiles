@@ -37,3 +37,10 @@ brew "bat" # Alternative for "cat" command
 # terraform
 tap "hashicorp/tap"
 brew "hashicorp/tap/terraform"
+
+# GCP
+cask "google-cloud-sdk"
+
+# python
+brew "pyenv"
+brew "pyenv-virtualenv"

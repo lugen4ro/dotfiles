@@ -1,6 +1,7 @@
 # --------------------
 # Powerlevel10k (Promptline)
 # --------------------
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -118,9 +119,9 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 # Python
 # --------------------
 # pyenv stuff
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init --path)"
-
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 # --------------------
 # Git
@@ -174,11 +175,19 @@ function delta-toggle () {
 # --------------------
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
-alias gb="git branch | fzf | cut -c 3- | xargs git switch"
 export FZF_DEFAULT_COMMAND="fd . $HOME"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd -t d . $HOME"
+
+# TODO: Make it so ~ part is replaced by ~ not this long unnecessary prepend
+# Ignore Library directory for mac & search under HOME & devenv-maker which is ignored under HOME because of .gitignore
+# export FZF_ALT_C_COMMAND="fd --base-directory ~  -E Library -t d . code/devenv-maker/*" 
+
+# export FZF_ALT_C_COMMAND="fd -E Library -t d . ~ ~/code/devenv-maker/*" 
+# export FZF_ALT_C_COMMAND="fd -E Library -t d . ~/code/devenv-maker/*" 
+export FZF_ALT_C_COMMAND="fd -E Library -t d" 
 set -o ignoreeof # accidental close prevention - EOF (ctrl-d) does not exit the zsh
+
+alias gbs="git branch | fzf | cut -c 3- | xargs git switch"
 
 
 # --------------------

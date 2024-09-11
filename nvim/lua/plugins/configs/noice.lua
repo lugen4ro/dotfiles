@@ -1,10 +1,19 @@
 local noice = require("noice")
 
+----------------------------------------
+-- TODOs
+----------------------------------------
+
 -- TODO: signature seems to not show up for C++. Sometimes if you hurry after starting nvim it does, but the second time it disapperas.
 -- Seems like it is overwritten. Fix that
 -- TODO: enable completion when in search mode
 
+----------------------------------------
+-- Refrences
+----------------------------------------
 -- https://github.com/folke/noice.nvim
+
+-- Samples setups for stuff like filtering messages etc.
 -- https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
 
 -- nvim log levels
@@ -14,6 +23,10 @@ local noice = require("noice")
 -- vim.log.levels.WARN 3
 -- vim.log.levels.ERROR 4
 -- vim.log.levels.OFF 5
+
+----------------------------------------
+-- Notify (Notifications part of Noice)
+----------------------------------------
 
 -- Notify
 require("notify").setup({
@@ -27,6 +40,7 @@ require("notify").setup({
 		WARN = "",
 	},
 	-- level = 2, -- minimum log level --> INFO
+	-- TODO: Want INFO as well but not unnecessary ones such as "saved ~~" or "not found" on search so make it possible to filter out some
 	level = 3, -- make Warn because too many notifications with Info level
 	minimum_width = 50,
 	max_width = 200, -- Max number of coluns for messages
@@ -48,8 +62,30 @@ local open_url_wsl2 = function(url)
 	vim.cmd("silent !cmd.exe /C start " .. url)
 end
 
+----------------------------------------
+-- Noice
+----------------------------------------
+
 -- https://github.com/folke/noice.nvim#%EF%B8%8F-configuration
 noice.setup({
+	routes = {
+		{
+			filter = {
+				event = "msg_show",
+				kind = "",
+				find = "written",
+			},
+			opts = { skip = true },
+		},
+		-- {
+		-- 	filter = {
+		-- 		event = "msg_show",
+		-- 		kind = "search_count",
+		-- 	},
+		-- 	opts = { skip = true },
+		-- },
+	},
+
 	lsp = {
 		-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		override = {

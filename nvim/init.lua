@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
+-- English for notifications etc. (UTF-8 so Japanese can be handled without mojibake)
+vim.cmd("language en_US.UTF-8")
+
 -- install lazy.nvim if not present
 -- vim.fn.stdpath("data") --> ~/.local/share/nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim" -- path where its going to be installed

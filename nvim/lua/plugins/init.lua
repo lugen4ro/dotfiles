@@ -347,7 +347,7 @@ local plugins = {
 				"yamlls",
 				"eslint", -- ts, js
 				-- "emmet_language_server", -- HTML CSS
-				"terraformls",
+				"terraformls", -- TODO: this seemingly takes over colofing, so in telescope it's treesitter, in-file it is this, so different syles...
 			},
 
 			automatic_installation = true,

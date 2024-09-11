@@ -8,7 +8,8 @@ lint.linters_by_ft = {
 	html = { "htmlhint" },
 	css = { "stylelint" }, -- https://github.com/mfussenegger/nvim-lint/blob/2cf9ad095130755d7d87f1730bcf33c91ee822e4/lua/lint/linters/stylelint.lua#L8
 	scss = { "stylelint" },
-	python = { "pylint" },
+	-- python = { "pylint" },
+	python = { "mypy", "ruff" },
 }
 
 local lint_progress = function()

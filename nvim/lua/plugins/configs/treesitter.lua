@@ -17,6 +17,7 @@ require("nvim-treesitter.configs").setup({
 		"html",
 		"css",
 		"cpp",
+		"terraform",
 	},
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
