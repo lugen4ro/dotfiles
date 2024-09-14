@@ -2,7 +2,7 @@ Host github.com
   HostName github.com
   User git
   Port 22
-  IdentityFile ~/.secrets/id_ecdsa
+  IdentityFile ~/.secrets/id_ed25519
   AddKeysToAgent yes
   IdentitiesOnly yes
 
