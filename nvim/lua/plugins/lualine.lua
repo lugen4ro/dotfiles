@@ -1,4 +1,6 @@
--- Copied defaults and edited from there
+-----------------------------------------------------------------------------
+-- Lualine - Status line plugin
+-----------------------------------------------------------------------------
 require("lualine").setup({
 	options = {
 		icons_enabled = true,

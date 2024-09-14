@@ -12,10 +12,10 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
 # --------------------
 # Oh-my-zsh
 # --------------------
-
 # TODO: zsh-autocomplete is nice for completing commands but too much clutter. Find a way that is not this intrusive
 # plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting zsh-autocomplete)
 
@@ -31,17 +31,6 @@ zstyle ':omz:plugins:nvm' lazy yes
 plugins=(git nvm zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-
-
-# --------------------
-# Other
-# --------------------
-# For neovim, setting IME with zenhan
-# export zenhan="C:\Users\nakam\Documents\nvim"
-export zenhan="/mnt/c/Users/nakam/Documents/nvim/zenhan.exe"
-
-# Put symbolic links here
-PATH=$PATH:$HOME/.local/bin
 
 
 # --------------------
@@ -79,6 +68,16 @@ alias treeignore="rg --files | tree --fromfile"
 
 
 # --------------------
+# Brew
+# --------------------
+# Add home brew to path on Linux (for mac is available by default)
+# on Mac uname would return "Darwin"
+if [[ "$(uname)" == "Linux" ]]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
+
+# --------------------
 # Deno
 # --------------------
 export DENO_INSTALL="/Users/lukasgenshiro.nakamura/.deno"
@@ -101,6 +100,7 @@ fi
 # --------------------
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
 eval "$(goenv init -)"
 
 
@@ -123,6 +123,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+
 # --------------------
 # Git
 # --------------------
@@ -135,13 +136,6 @@ alias ghv="gh pr view --web"
 # Neovim
 # --------------------
 alias vi="nvim"
-
-
-# Add home brew to path on Linux (for mac is available by default)
-# on Mac uname would return "Darwin"
-if [[ "$(uname)" == "Linux" ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
 
 
 # --------------------
@@ -188,6 +182,17 @@ export FZF_ALT_C_COMMAND="fd -E Library -t d"
 set -o ignoreeof # accidental close prevention - EOF (ctrl-d) does not exit the zsh
 
 alias gbs="git branch | fzf | cut -c 3- | xargs git switch"
+
+
+# --------------------
+# Other
+# --------------------
+# For neovim, setting IME with zenhan
+# export zenhan="C:\Users\nakam\Documents\nvim"
+export zenhan="/mnt/c/Users/nakam/Documents/nvim/zenhan.exe"
+
+# Put symbolic links here
+PATH=$PATH:$HOME/.local/bin
 
 
 # --------------------

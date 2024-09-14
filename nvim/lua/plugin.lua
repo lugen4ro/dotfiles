@@ -1,17 +1,19 @@
+-- TODO: Plugins to add
+--       - diffview.nvim https://github.com/sindrets/diffview.nvim?tab=readme-ov-file
+--       - rainbow-delimiters.nvim https://github.com/HiPhish/rainbow-delimiters.nvim
+--      - vim-rails https://github.com/tpope/vim-rails
+--      - oil.nvim https://github.com/stevearc/oil.nvim
+-- TODO: Plugins to create
+--      - Plugin to show filename on buffer change
+
 local plugins = {
 
-	-- TODO: Plugins to add
-	--       - diffview.nvim https://github.com/sindrets/diffview.nvim?tab=readme-ov-file
-	--       - rainbow-delimiters.nvim https://github.com/HiPhish/rainbow-delimiters.nvim
-	--      - vim-rails https://github.com/tpope/vim-rails
-	--      - oil.nvim https://github.com/stevearc/oil.nvim
-	-- TODO: Plugins to create
-	--      - Plugin to show filename on buffer change
+	-- Custom status line
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
-			require("plugins.configs.lualine")
+			require("plugins.lualine")
 		end,
 	},
 
@@ -114,7 +116,7 @@ local plugins = {
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("plugins.configs.harpoon")
+			require("plugins.harpoon")
 		end,
 	},
 
@@ -131,7 +133,7 @@ local plugins = {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
-			require("plugins.configs.noice")
+			require("plugins.noice")
 		end,
 	},
 
@@ -154,7 +156,7 @@ local plugins = {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require("plugins.configs.todo")
+			require("plugins.todo")
 		end,
 	},
 
@@ -249,7 +251,7 @@ local plugins = {
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		config = function()
-			require("plugins.configs.typescript-tools")
+			require("plugins.typescript-tools")
 		end,
 	},
 
@@ -286,7 +288,7 @@ local plugins = {
 	--         -- …etc.
 	--     },
 	--     config = function()
-	--         require("plugins.configs.barbar")
+	--         require("plugins.barbar")
 	--     end,
 	--     version = '^1.0.0', -- optional: only update when a new 1.x version is released
 	-- },
@@ -309,7 +311,7 @@ local plugins = {
 			},
 		},
 		config = function()
-			require("plugins.configs.lspconfig")
+			require("plugins.lspconfig")
 		end,
 	},
 
@@ -387,7 +389,7 @@ local plugins = {
 			-- "sharkdp/fd",
 		},
 		config = function()
-			require("plugins.configs.telescope")
+			require("plugins.telescope")
 		end,
 	},
 
@@ -428,7 +430,7 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
-			require("plugins.configs.treesitter")
+			require("plugins.treesitter")
 		end,
 	},
 
@@ -480,7 +482,7 @@ local plugins = {
 			},
 		},
 		config = function()
-			require("plugins.configs.cmp")
+			require("plugins.cmp")
 		end,
 	},
 
@@ -491,7 +493,7 @@ local plugins = {
 		"mfussenegger/nvim-lint",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("plugins.configs.lint")
+			require("plugins.lint")
 		end,
 	},
 
@@ -510,7 +512,7 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = { "BufReadPre", "BufNewFile" },
 		config = function()
-			require("plugins.configs.format")
+			require("plugins.format")
 		end,
 	},
 
@@ -538,7 +540,7 @@ local plugins = {
 			"jay-babu/mason-nvim-dap.nvim",
 		},
 		config = function()
-			require("plugins.configs.debug")
+			require("plugins.debug")
 		end,
 	},
 
@@ -602,7 +604,7 @@ local plugins = {
 			vim.opt.timeout = true
 			vim.opt.timeoutlen = 500 -- how long to wait to show whichkey menu after key input
 		end,
-		-- opts = require("plugins.configs.whichkey"),
+		-- opts = require("plugins.whichkey"),
 		opts = {},
 	},
 
@@ -616,7 +618,7 @@ local plugins = {
 		},
 		name = "registers",
 		config = function()
-			require("plugins.configs.registers")
+			require("plugins.registers")
 		end,
 	},
 
@@ -634,7 +636,7 @@ local plugins = {
 			"tiagofumo/vim-nerdtree-syntax-highlight",
 		},
 		config = function()
-			require("plugins.configs.nerdtree")
+			require("plugins.nerdtree")
 		end,
 	},
 
@@ -681,7 +683,7 @@ local plugins = {
 	},
 }
 
-require("lazy").setup(plugins, require("plugins.configs.lazy"))
+require("lazy").setup(plugins, require("plugins.lazy"))
 
 -- On hold
 -- {
@@ -719,6 +721,6 @@ require("lazy").setup(plugins, require("plugins.configs.lazy"))
 --                     "theHamsta/nvim-dap-virtual-text",
 --     },
 --     config = function ()
---         require("plugins.configs.debug")
+--         require("plugins.debug")
 -- },
 --     end,

@@ -191,6 +191,9 @@ vim.keymap.set(
 )
 vim.keymap.set("n", "<leader>ca", 'gg<S-v>G"+y<C-o>', { desc = "[copy all] Copy whole buffer to system clipboard" })
 
+-- Yank highlighted text and keep cursor at its position
+vim.keymap.set("v", "y", "ygv<Esc>")
+
 ------------------- AtCoder --------------------
 
 -- Copy Buffer

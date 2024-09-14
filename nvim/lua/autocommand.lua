@@ -1,6 +1,9 @@
--------------------- autocmd --------------------
+-----------------------------------------------------------------------------
+-- Auto-insert comment behaviour
+-----------------------------------------------------------------------------
 
--- no auto insert comment when using 'o' to create a new line. keep autocomment when pressing 'enter'
+-- Prevent auto insert comment when using 'o' to create a new line.
+-- Keep autocomment when pressing 'enter'
 -- `:help fo-table` for details on options
 -- just using vim.opt.formatoptions:remove({'r', 'c', 'o'}) didn't work because it was overwritten
 -- you can see where the variable was last changed with `:verbose set formatoptions?`
@@ -9,7 +12,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "set fo-=r fo-=c fo-=o",
 })
 
--- Highlight on yank
+-----------------------------------------------------------------------------
+-- Highlight on yan
+-----------------------------------------------------------------------------
 vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = "YankHighlight",
@@ -18,18 +23,30 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-----------------------------------------------------------------------------
+-- AtCoder specific (Competitive programming setup configuration)
+-----------------------------------------------------------------------------
+
 -- Auto save input file for AtCoder
 vim.api.nvim_create_autocmd("BufLeave", {
 	pattern = "/home/gen4ro/code/dsa/cpp/atcoder/input",
 	command = "w",
 })
 
--- In quickfix window, disable <CR> keymapping
--- You need <CR> original definition in quickfix window to open location
+-----------------------------------------------------------------------------
+-- Quickfix
+-----------------------------------------------------------------------------
+
+-- Have set a custom keymapping for <CR> in normal mode which interferes with quickfix keys
+-- So in quickfix window, disable the <CR> keymapping (<CR> is used to open location)
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "quickfix",
 	command = "nnoremap <buffer> <CR> <CR>",
 })
+
+-----------------------------------------------------------------------------
+-- Colorscheme (ovewrites)
+-----------------------------------------------------------------------------
 
 -- Overwrite color scheme
 vim.api.nvim_create_autocmd("ColorScheme", {
@@ -50,6 +67,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
 	end,
 })
+
+-----------------------------------------------------------------------------
+-- Colorscheme (ovewrites)
+-----------------------------------------------------------------------------
 
 -- Do not make a backup before overwriting a file, so that parcel can recognize file changes
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -76,9 +97,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --     pattern = "*",
 --     command = "'y",
 -- })
-
--- Yank highlighted text and keep cursor at its position
-vim.keymap.set("v", "y", "ygv<Esc>")
 
 --------- Auto change IME when leaving insert mode (have to set environamental variable zenhan in .zshrc to point to zenhan.exe)
 -- Japanese
@@ -119,141 +137,4 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
 --         -- Format
 --         require("conform").format({ bufnr = args.buf })
 --     end,
--- })
-
--- -- Yank everything to windows system clipboard as well (!!! yanks also on delete to system clipboard...)
--- vim.api.nvim_create_autocmd("TextYankPost", {
---     pattern = "*",
---     desc = "Yank to windows system clipboard",
---
---     command = "call system('/mnt/c/windows/system32/clip.exe ',@\")",
--- })
-
--------------------- Custom commands --------------------
-
--- Copy path to file from git root, including git root (if no git repo, copy full path)
-vim.api.nvim_create_user_command("CopyPath", function()
-	-- Get the absolute path of the current file
-	local file_path = vim.fn.expand("%:p")
-	-- Get the Git repository root
-	local git_root_path = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
-	print(git_root_path)
-
-	-- If we are not in a Git repo, default to full file path
-	if git_root_path == nil or git_root_path == "" then
-		vim.fn.setreg("+", file_path)
-		return
-	end
-
-	local git_root_name = git_root_path:match("([^/]+)$")
-
-	-- Get the relative path from the Git root (including git root)
-	local relative_path = file_path:sub(#git_root_path + 2)
-	local relative_path_including_git_root = git_root_name .. "/" .. relative_path
-
-	-- Copy the modified path to the clipboard (surround with `` for notion & slack formatting)
-	vim.fn.setreg("+", "`" .. relative_path_including_git_root .. "`")
-end, {})
-
--- AtCoder - Save contest problem in appropriate folder with appropriate name
--- Ex) :Con BC321 A - Increasing Subsequence ----> contest/BC321_A_-_Increasing_Subsequence.cpp
-vim.api.nvim_create_user_command("CON", function(args)
-	-- args.args --> single string of all arguments
-	-- args.fargs --> table of all arguments
-
-	local utils = require("utils")
-
-	-- Extract contest and problem from arguments
-	local contest, problem = string.match(args.args, "([^ ]+) (.+)")
-
-	-- Process problem string
-	problem = string.gsub(problem, " ", "_")
-	problem = string.gsub(problem, "/", "_")
-
-	-- Create contest directory if it doesn't exist
-	local dir_path = "/home/gen4ro/code/dsa/cpp/atcoder/contest/" .. contest
-	if not utils.directory_exists(dir_path) then
-		os.execute("mkdir " .. dir_path)
-		print("Created directory -> " .. dir_path)
-	end
-
-	-- If file exists already, ask for confirmation
-	local full_path = dir_path .. "/" .. problem .. ".cpp"
-	if utils.file_exists(full_path) then
-		local confirm = vim.fn.input("File already exists. Overwrite? (y/n) > ")
-		if confirm ~= "y" then
-			print("   ... Aborted")
-			return
-		end
-	end
-
-	-- Save file
-	vim.cmd("silent write! " .. full_path)
-	print("Saved --> " .. full_path)
-end, {
-	nargs = "*", -- By default doesn't accept any arguments. This changes that.
-	desc = "Save current buffer in the contest folder with the right name",
-})
-
--- Move cwd to current buffer's directory
-vim.api.nvim_create_user_command("Cdb", "cd %:p:h", {
-	desc = "Change directory to current buffer's directory",
-})
-
--- Delta
-vim.api.nvim_create_user_command("Delta", "tab Git -c pager.diff=delta diff", {
-	desc = "Execute delta to show all diffs in current repo",
-})
-
--- Conceal level only for neorg buffer
--- vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
---   pattern = {"*.norg"},
---   command = "set conceallevel=2"
--- })
-
--- vim.api.nvim_create_autocmd('BufEnter', {
---     pattern = '*',
---     callback = function ()
---         vim.opt.conceallevel = 2
---     end,
--- })
-
--- Prevent unindent at the first colon when typing "std::"
--- Using vim.opt did not work because it was overwritten
--- Tried ---> vim.opt.cindent = false
--- Overwritten ---> cindent Last set from ~/.local/share/nvim/nvim-linux64/share/nvim/runtime/indent/cpp.vim line 13
--- vim.api.nvim_create_autocmd('BufEnter', {
---   pattern = '',
---   command = 'set nocindent'
--- })
-
--- -- Start Startifu when Vim is started without file arguments.
--- vim.api.nvim_create_augroup('Startify', { clear = true })
--- vim.api.nvim_create_autocmd('StdinReadPre', {
---     group = "Startify",
---     pattern = '*',
---     callback = function() STARTIFY_STD_IN = 1 end,
--- })
---
--- vim.api.nvim_create_autocmd('VimEnter', {
---     group = "Startify",
---     pattern = '*',
---     callback = function()
---         print(vim.fn.argc())
---         if vim.fn.argc() == 0 and not STARTIFY_STD_IN then
---             vim.cmd("Startify")
---         end
---     end,
--- })
-
--- vim.api.nvim_create_autocmd('StdinReadPre', {
---     group = "Startify",
---     pattern = '*',
---     command = "let std_in=1"
--- })
--- vim.api.nvim_create_autocmd('VimEnter', {
---     group = "Startify",
---     pattern = '*',
---     --command = "Startify"
---     command = "if argc() == 0 && !exists('s:std_in') | Startify | endif"
 -- })
