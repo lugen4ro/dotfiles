@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- Auto save input file for AtCoder
 vim.api.nvim_create_autocmd("BufLeave", {
-    pattern = "/home/gen4ro/code/dsa/cpp/atcoder/input",
+    pattern = "/home/gen4ro/code/atcoder/.io/input",
     command = "w",
 })
 
