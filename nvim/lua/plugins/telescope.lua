@@ -148,11 +148,8 @@ local function make_entry_string(picker)
 
 		-- Specify width for each column
 		items = {
-			-- { width = 2 }, -- No fixed width
-			-- { remaining = true },
-			{ width = 15 },
-			-- { width = 4 },
-			{ remaining = true },
+			{ width = 25 }, -- width for showing filename
+			{ remaining = true }, -- width for showing matched line
 		},
 	})
 

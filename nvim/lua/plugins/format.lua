@@ -34,6 +34,9 @@ conform.setup({
 		-- avsc = { "prettier" }
 		go = { "prettier" },
 		terraform = { "terraform_fmt" },
+		ruby = { "rubocop" },
+		-- ruby = { "rubyfmt" },
+		-- ruby = { "rufo" },
 	},
 
 	-- SET THIS WITH CUSTOM AUTOCOMMAND

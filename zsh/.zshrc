@@ -41,15 +41,12 @@ alias rc="vi ~/.zshrc"
 alias src="source ~/.zshrc"
 
 # Tidbits file
-alias cd-tid="cd ~/tidbits/"
-alias vi-tid="vi --cmd 'cd ~/.dotfiles/' ~/.dotfiles/tidbits/tidbits/tidbits.md"
-alias tid="vi --cmd 'cd ~/.dotfiles/' ~/.dotfiles/tidbits/tidbits/tidbits.md"
+alias tid="vi --cmd 'cd ~/tidbits/' git.md"
 
 # dotfiles
 alias dot="cd ~/.dotfiles"
 
 # Keymap for editing neovim configurations
-# alias vi-nvim="vi --cmd 'cd ~/dotfiles/neovim/.config/nvim/' ."
 alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugins/init.lua"
 
 # Open windows file explorer
@@ -130,6 +127,7 @@ eval "$(pyenv init -)"
 export EDITOR="nvim" # set editor for github cli tool gh
 alias ghpr="gh pr create -a @me"
 alias ghv="gh pr view --web"
+alias gs="git stash"
 
 
 # --------------------
@@ -183,6 +181,22 @@ set -o ignoreeof # accidental close prevention - EOF (ctrl-d) does not exit the 
 
 alias gbs="git branch | fzf | cut -c 3- | xargs git switch"
 
+source ~/fzf-git.sh
+
+
+
+# --------------------
+# Ruby
+# --------------------
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+# --------------------
+# Mise
+# --------------------
+# eval "$(/Users/lukasgenshiro.nakamura/.local/bin/mise activate zsh)"
+
 
 # --------------------
 # Other
@@ -199,3 +213,5 @@ PATH=$PATH:$HOME/.local/bin
 # Load local settings (Should come last)
 # --------------------
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+. "$HOME/.cargo/env"
