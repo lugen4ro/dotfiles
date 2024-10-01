@@ -98,19 +98,37 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 --     command = "'y",
 -- })
 
---------- Auto change IME when leaving insert mode (have to set environamental variable zenhan in .zshrc to point to zenhan.exe)
--- Japanese
-vim.api.nvim_create_autocmd("InsertLeave", {
-    pattern = "*",
-    desc = "",
-    command = "call system('${zenhan} 0')",
-})
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-    pattern = "*",
-    desc = "",
-    command = "call system('${zenhan} 0')",
-})
+-----------------------------------------------------------------------------
+-- IME (For Japanse input switching)
+-----------------------------------------------------------------------------
+-- Windows / WSL2
+-- Auto change IME when leaving insert mode (have to set environamental variable zenhan in .zshrc to point to zenhan.exe)
+if vim.loop.os_uname().sysname ~= "Darwin" then
+    vim.api.nvim_create_autocmd("InsertLeave", {
+        pattern = "*",
+        desc = "",
+        command = "call system('${zenhan} 0')",
+    })
+    vim.api.nvim_create_autocmd("CmdlineLeave", {
+        pattern = "*",
+        desc = "",
+        command = "call system('${zenhan} 0')",
+    })
+end
 
+-- macOS
+-- TODO: 現状の状態（IMEONかどうか）がわからないので、毎回実行され、遅いので一旦コメントアウト
+
+-- if vim.loop.os_uname().sysname == "Darwin" then
+--     vim.api.nvim_create_autocmd("InsertLeave", {
+--         pattern = "*",
+--         desc = "",
+--         command = "call system('osascript ~/.dotfiles/nvim/utils/set_input_source.scpt en')",
+--     })
+-- end
+-----------------------------------------------------------------------------
+-- TEMPORARY
+-----------------------------------------------------------------------------
 -- -- [Conform] format on save, except for C++
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 --     pattern = "*",

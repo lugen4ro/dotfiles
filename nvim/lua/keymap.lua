@@ -3,6 +3,12 @@
 -------------------- Non-Plugin Keymaps -------------------
 -- exit insert mode
 vim.keymap.set("i", "kj", "<Esc>", { desc = "[Basic] Exit insert mode" })
+vim.keymap.set("i", "ｋｊ", function()
+    vim.api.nvim_input("<Esc>")
+    vim.cmd("call system('osascript ~/.dotfiles/nvim/utils/set_input_source.scpt en')") -- Switch to english from japanese
+end, { desc = "[Basic] Exit insert mode while IME on" }) -- Japanese
+-- When exiting Japanese language mode, also exit insert mode
+-- vim.keymap.set("i", "<Esc>", "<F14><Esc>", { silent = true })
 
 -- Save Buffer
 -- vim.keymap.set("n", "<leader>w", ":update<CR>", { silent = true, desc = "[Basic] Save buffer" })
@@ -178,9 +184,6 @@ vim.keymap.set(
 -- Quickfix navigation
 vim.keymap.set("n", "<Home>", ":cprev<Enter>zz", { silent = true })
 vim.keymap.set("n", "<End>", ":cnext<Enter>zz", { silent = true })
-
--- When exiting Japanese language mode, also exit insert mode
--- vim.keymap.set("i", "<Esc>", "<F14><Esc>", { silent = true })
 
 -------------------- Copy stuff --------------------
 vim.keymap.set(
