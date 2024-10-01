@@ -1,6 +1,23 @@
--- Keymaps --
+-----------------------------------------------------------------------------
+-- Copilot
+-----------------------------------------------------------------------------
 
--------------------- Non-Plugin Keymaps -------------------
+-- Start Chat session
+vim.keymap.set("n", "<leader>cc", function()
+    vim.cmd("CopilotChat")
+    vim.cmd("startinsert")
+end, { desc = "[Copilot] Start chat with copilot" })
+
+-- Start Chat session
+vim.keymap.set("v", "<leader>cc", function()
+    vim.cmd("CopilotChat")
+    vim.cmd("startinsert")
+end, { desc = "[Copilot] Start chat with copilot" })
+
+-----------------------------------------------------------------------------
+-- Insert mode
+-----------------------------------------------------------------------------
+
 -- exit insert mode
 vim.keymap.set("i", "kj", "<Esc>", { desc = "[Basic] Exit insert mode" })
 vim.keymap.set("i", "ｋｊ", function()
@@ -9,6 +26,10 @@ vim.keymap.set("i", "ｋｊ", function()
 end, { desc = "[Basic] Exit insert mode while IME on" }) -- Japanese
 -- When exiting Japanese language mode, also exit insert mode
 -- vim.keymap.set("i", "<Esc>", "<F14><Esc>", { silent = true })
+
+-----------------------------------------------------------------------------
+-- Saving
+-----------------------------------------------------------------------------
 
 -- Save Buffer
 -- vim.keymap.set("n", "<leader>w", ":update<CR>", { silent = true, desc = "[Basic] Save buffer" })
@@ -65,10 +86,32 @@ vim.keymap.set("n", "<leader>p", '"0p', { desc = "[Basic] Paste last yanked" })
 -- Insert space in normal mode
 vim.keymap.set("n", "<leader><CR>", "a <Esc>", { desc = "[Basic] Insert space while in normal mode" })
 
--- copy to system clipboard
-vim.keymap.set("x", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
-vim.keymap.set("v", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
+-----------------------------------------------------------------------------
+-- Yank
+-----------------------------------------------------------------------------
+
+-- copy to system clipboard (already doing that without this)
+-- vim.keymap.set("x", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
+-- vim.keymap.set("v", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
+-- vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
+
+-- yank stuff
+vim.keymap.set("n", "<leader>yf", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
+
+vim.keymap.set(
+    "n",
+    "<leader>yf",
+    ":CopyPath<Enter>",
+    { desc = "[yank file path] Copy relative File path from git root (including git root)" }
+)
+vim.keymap.set("n", "<leader>ya", 'gg<S-v>G"+y<C-o>', { desc = "[yank all] Copy whole buffer to system clipboard" })
+
+-- Yank highlighted text and keep cursor at its position
+vim.keymap.set("v", "y", "ygv<Esc>")
+
+-----------------------------------------------------------------------------
+-- Delete
+-----------------------------------------------------------------------------
 
 -- delete without copying
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "" })
@@ -184,18 +227,6 @@ vim.keymap.set(
 -- Quickfix navigation
 vim.keymap.set("n", "<Home>", ":cprev<Enter>zz", { silent = true })
 vim.keymap.set("n", "<End>", ":cnext<Enter>zz", { silent = true })
-
--------------------- Copy stuff --------------------
-vim.keymap.set(
-    "n",
-    "<leader>cf",
-    ":CopyPath<Enter>",
-    { desc = "[copy file path] Copy relative File path from git root (including git root)" }
-)
-vim.keymap.set("n", "<leader>ca", 'gg<S-v>G"+y<C-o>', { desc = "[copy all] Copy whole buffer to system clipboard" })
-
--- Yank highlighted text and keep cursor at its position
-vim.keymap.set("v", "y", "ygv<Esc>")
 
 ------------------- AtCoder --------------------
 

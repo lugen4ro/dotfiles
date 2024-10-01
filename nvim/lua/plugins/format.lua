@@ -13,31 +13,31 @@ conform.setup({
         timeout_ms = 500, --  Time to block for formatting (milisec)
     },
 
-	formatters_by_ft = {
-		vue = { "prettier" },
-		lua = { "stylua" }, -- cofigure in .stylua.toml file in project root directory
-		-- python = { "isort", "black" },
-		python = { "ruff_format" },
-		javascript = { "prettier" },
-		typescript = { "prettier" },
-		javascriptreact = { "prettier" },
-		typescriptreact = { "prettier" },
-		svelte = { "prettier" },
-		css = { "prettier" },
-		html = { "prettier" },
-		yaml = { "prettier" },
-		json = { "prettier" },
-		jsonc = { "prettier" }, -- tsconfig.json is actually jsonc
-		markdown = { "prettier" },
-		graphql = { "prettier" },
-		cpp = { "clang_format" },
-		-- avsc = { "prettier" }
-		go = { "prettier" },
-		terraform = { "terraform_fmt" },
-		ruby = { "rubocop" },
-		-- ruby = { "rubyfmt" },
-		-- ruby = { "rufo" },
-	},
+    formatters_by_ft = {
+        vue = { "prettier" },
+        lua = { "stylua" }, -- cofigure in .stylua.toml file in project root directory
+        -- python = { "isort", "black" },
+        python = { "ruff_format" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
+        svelte = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        yaml = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" }, -- tsconfig.json is actually jsonc
+        markdown = { "prettier" },
+        graphql = { "prettier" },
+        cpp = { "clang_format" },
+        -- avsc = { "prettier" }
+        go = { "prettier" },
+        terraform = { "terraform_fmt" },
+        -- ruby = { "rubocop" },
+        -- ruby = { "rubyfmt" },
+        -- ruby = { "rufo" },
+    },
 
     -- SET THIS WITH CUSTOM AUTOCOMMAND
     -- If this is set, Conform will run the formatter on save.
