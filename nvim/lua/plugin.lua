@@ -5,6 +5,7 @@
 --      - oil.nvim https://github.com/stevearc/oil.nvim
 -- TODO: Plugins to create
 --      - Plugin to show filename on buffer change
+--      - Plugin for volar that when doing goto definition, takes you to the actual component (vscode plugin: https://marketplace.visualstudio.com/items?itemName=antfu.goto-alias)
 
 local plugins = {
 
@@ -349,7 +350,7 @@ local plugins = {
                 "yamlls",
                 "eslint", -- ts, js
                 "volar",
-                "tsserver",
+                -- "tsserver",
                 -- "emmet_language_server", -- HTML CSS
                 "terraformls", -- TODO: this seemingly takes over colofing, so in telescope it's treesitter, in-file it is this, so different syles...
             },

@@ -372,6 +372,13 @@ vim.keymap.set(
     { desc = "[Telescope] Search sessions (auto-session)" }
 )
 
+-- Search for file with word under cursor
+vim.keymap.set("n", "<leader>sw", function()
+    vim.cmd("normal! yiw") -- yank word under cursor
+    local search_term = vim.fn.getreg('"') -- Get the yanked word from register "
+    builtin.find_files({ default_text = search_term })
+end, { desc = "[Telescope] Search for file with word under cursor" })
+
 ------------------- Harpoon -------------------
 --local mark = require("harpoon.mark")
 --local ui = require("harpoon.ui")
