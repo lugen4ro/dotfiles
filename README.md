@@ -71,3 +71,10 @@ gettext                 libevent                luajit                  neovim  
 ==> Casks
 apptivate               google-chrome           keycastr                microsoft-auto-update   microsoft-office        notion                  slack                   temurin                 zoom
 ```
+
+## NEED TO FIX
+
+```
+/home/gen4ro/.zshrc:source:184: no such file or directory: /home/gen4ro/fzf-git.sh
+/home/gen4ro/.zshrc:.:217: no such file or directory: /home/gen4ro/.cargo/env
+```
