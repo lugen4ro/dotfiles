@@ -14,6 +14,11 @@ vim.keymap.set("v", "<leader>cc", function()
     vim.cmd("startinsert")
 end, { desc = "[Copilot] Start chat with copilot" })
 
+-- Explain
+vim.keymap.set("v", "<leader>ce", function()
+    vim.cmd("CopilotChatExplain")
+end, { desc = "[Copilot] Explain selected code" })
+
 -----------------------------------------------------------------------------
 -- Insert mode
 -----------------------------------------------------------------------------
