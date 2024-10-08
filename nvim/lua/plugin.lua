@@ -77,12 +77,28 @@ local plugins = {
             { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
             { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
         },
+        -- config = function()
+        --     require("plugins.copilot")
+        -- end,
         opts = {
-            debug = true, -- Enable debugging
+            -- debug = true, -- Enable debugging
             auto_follow_cursor = false,
-            -- See Configuration section for rest
+            mappings = {
+                yank_diff = {
+                    normal = "<leader>cy",
+                    register = '"',
+                },
+                show_diff = {
+                    normal = "<leader>cd",
+                },
+                show_system_prompt = {
+                    normal = "<leader>cp",
+                },
+                show_user_selection = {
+                    normal = "<leader>cs",
+                },
+            },
         },
-        -- See Commands section for default commands if you want to lazy load on them
     },
 
     -- Execute code

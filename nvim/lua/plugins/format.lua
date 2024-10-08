@@ -11,6 +11,7 @@ conform.setup({
         lsp_format = "never", -- Do not use LSP for formatting by default (prevent unintended formatting)
         stop_after_first = false, -- Only apply first formatter if multiple are available
         timeout_ms = 500, --  Time to block for formatting (milisec)
+        -- timeout_ms = 2000, --  Time to block for formatting (milisec)
     },
 
     formatters_by_ft = {
@@ -34,9 +35,16 @@ conform.setup({
         -- avsc = { "prettier" }
         go = { "prettier" },
         terraform = { "terraform_fmt" },
-        -- ruby = { "rubocop" },
+        ruby = { "rubocop" },
         -- ruby = { "rubyfmt" },
         -- ruby = { "rufo" },
+    },
+
+    formatters = {
+        rubocop = {
+            -- https://github.com/stevearc/conform.nvim/issues/369#issuecomment-2096944302
+            args = { "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+        },
     },
 
     -- SET THIS WITH CUSTOM AUTOCOMMAND

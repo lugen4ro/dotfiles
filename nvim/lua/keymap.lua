@@ -8,16 +8,23 @@ vim.keymap.set("n", "<leader>cc", function()
     vim.cmd("startinsert")
 end, { desc = "[Copilot] Start chat with copilot" })
 
--- Start Chat session
 vim.keymap.set("v", "<leader>cc", function()
     vim.cmd("CopilotChat")
     vim.cmd("startinsert")
 end, { desc = "[Copilot] Start chat with copilot" })
 
--- Explain
+-- Explain selected text
 vim.keymap.set("v", "<leader>ce", function()
     vim.cmd("CopilotChatExplain")
 end, { desc = "[Copilot] Explain selected code" })
+
+-- Quick chat with whole buffer
+vim.keymap.set("n", "<leader>cq", function()
+    local input = vim.fn.input("Quick Chat: ")
+    if input ~= "" then
+        require("CopilotChat").ask(input, { selection = require("CopilotChat.select").buffer })
+    end
+end, { desc = "CopilotChat - Quick chat" })
 
 -----------------------------------------------------------------------------
 -- Insert mode
