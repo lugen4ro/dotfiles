@@ -10,7 +10,8 @@ conform.setup({
     default_format_opts = {
         lsp_format = "never", -- Do not use LSP for formatting by default (prevent unintended formatting)
         stop_after_first = false, -- Only apply first formatter if multiple are available
-        timeout_ms = 500, --  Time to block for formatting (milisec)
+        -- timeout_ms = 500, --  Time to block for formatting (milisec)
+        timeout_ms = 1000, --  Time to block for formatting (milisec)
         -- timeout_ms = 2000, --  Time to block for formatting (milisec)
     },
 

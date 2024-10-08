@@ -1,5 +1,8 @@
 local lint = require("lint")
 
+-- TODO: fix having to press c-t twice to hide diagnostics
+-- TODO: by deafult do not show diagnostics
+
 lint.linters_by_ft = {
     -- javascript = { "eslint_d" },
     -- typescript = { "eslint_d" },

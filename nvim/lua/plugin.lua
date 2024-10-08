@@ -47,6 +47,9 @@ local plugins = {
         -- end,
     },
 
+    -- Open git files in github
+    { "almo7aya/openingh.nvim" },
+
     -- GitHub Copilot
     -- {
     --     "github/copilot.vim"
@@ -595,6 +598,22 @@ local plugins = {
         config = function()
             require("gitsigns").setup()
         end,
+    },
+
+    {
+        "akinsho/git-conflict.nvim",
+        version = "*",
+        -- config = true,
+        opts = {
+            default_mappings = {
+                ours = "co",
+                theirs = "ct",
+                both = "cb",
+                none = "c0",
+                next = "cn",
+                prev = "cb",
+            },
+        },
     },
 
     -- file tree
