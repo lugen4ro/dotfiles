@@ -11,8 +11,8 @@ conform.setup({
         lsp_format = "never", -- Do not use LSP for formatting by default (prevent unintended formatting)
         stop_after_first = false, -- Only apply first formatter if multiple are available
         -- timeout_ms = 500, --  Time to block for formatting (milisec)
-        timeout_ms = 1000, --  Time to block for formatting (milisec)
-        -- timeout_ms = 2000, --  Time to block for formatting (milisec)
+        -- timeout_ms = 1000, --  Time to block for formatting (milisec)
+        timeout_ms = 2000, --  Time to block for formatting (milisec)
     },
 
     formatters_by_ft = {
@@ -93,10 +93,6 @@ vim.api.nvim_create_user_command("FormatShow", function(args)
     print(vim.inspect(formatters))
 end, {})
 
---------------------------------------------------------------------------------
--- Autocommands
---------------------------------------------------------------------------------
-
 -- Disable auto-formatting on save ("Format" command will still work)
 -- Commands:
 --     - FormatDisable -> Disable formatting globally
@@ -121,4 +117,37 @@ vim.api.nvim_create_user_command("FormatEnable", function()
     vim.g.disable_autoformat = false
 end, {
     desc = "Re-enable autoformat-on-save",
+})
+
+--------------------------------------------------------------------------------
+-- Autocommands
+--------------------------------------------------------------------------------
+
+-- Disable auto-formatting for ruby
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+    if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+    else
+        vim.g.disable_autoformat = true
+    end
+end, {
+    desc = "Disable autoformat-on-save",
+    bang = true,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = { "*.js", "*.css", "*.html" },
+    desc = "Do not make a backup before overwriting a file, so that parcel can recognize file changes",
+    callback = function()
+        vim.opt_local.writebackup = false
+    end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+    pattern = "*.rb",
+    desc = "Disable format on save for ruby because rubocop formatter is very slow",
+    callback = function()
+        vim.b.disable_autoformat = true
+    end,
 })
