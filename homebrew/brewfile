@@ -44,3 +44,6 @@ cask "google-cloud-sdk"
 # python
 brew "pyenv"
 brew "pyenv-virtualenv"
+
+# pnpm
+brew "pnpm"

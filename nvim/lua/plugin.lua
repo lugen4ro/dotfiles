@@ -18,11 +18,6 @@ local plugins = {
         end,
     },
 
-    -- Preview colors
-    -- {
-    --     "RRethy/vim-hexokinase"
-    -- },
-
     {
         "rose-pine/neovim",
         name = "rose-pine",
@@ -157,17 +152,38 @@ local plugins = {
         end,
     },
 
+    -- {
+    --     "norcalli/nvim-colorizer.lua",
+    --     config = function()
+    --         vim.opt.termguicolors = true
+    --         require("colorizer").setup({
+    --             "lua",
+    --             "javascript",
+    --             "typescript",
+    --             "vue",
+    --             css = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    --             scss = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    --         })
+    --     end,
+    -- },
     {
-        "norcalli/nvim-colorizer.lua",
+        "NvChad/nvim-colorizer.lua", -- NvChad one because this fork has highlighting for tailwind
         config = function()
             vim.opt.termguicolors = true
             require("colorizer").setup({
-                "lua",
-                "javascript",
-                "typescript",
-                css = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                scss = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                user_default_options = {
+
+                    tailwind = true,
+                },
             })
+            -- require("colorizer").setup({
+            --     "lua",
+            --     "javascript",
+            --     "typescript",
+            --     "vue",
+            --     css = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+            --     scss = { css = true }, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+            -- })
         end,
     },
 
