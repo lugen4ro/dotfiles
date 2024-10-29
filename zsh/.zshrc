@@ -44,10 +44,10 @@ alias src="source ~/.zshrc"
 alias tid="vi --cmd 'cd ~/tidbits/' git.md"
 
 # dotfiles
-alias dot="cd ~/.dotfiles"
+alias dotfiles="cd ~/.dotfiles"
 
 # Keymap for editing neovim configurations
-alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugins/init.lua"
+alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugin.lua"
 
 # Open windows file explorer
 alias open="explorer.exe ."
