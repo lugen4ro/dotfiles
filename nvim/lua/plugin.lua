@@ -97,6 +97,7 @@ local plugins = {
         --     require("plugins.copilot")
         -- end,
         opts = {
+            model = "gpt-4o",
             -- debug = true, -- Enable debugging
             auto_follow_cursor = false,
             mappings = {

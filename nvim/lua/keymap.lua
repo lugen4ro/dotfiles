@@ -26,6 +26,13 @@ vim.keymap.set("n", "<leader>cq", function()
     end
 end, { desc = "CopilotChat - Quick chat" })
 
+-- Trigger Telescope for Copilot
+vim.keymap.set("v", "<leader>ct", function()
+    -- vim.cmd("CopilotChatExplain")
+    local actions = require("CopilotChat.actions")
+    require("CopilotChat.integrations.telescope").pick(actions.prompt_actions())
+end, { desc = "[Copilot] Explain selected code" })
+
 -----------------------------------------------------------------------------
 -- Insert mode
 -----------------------------------------------------------------------------
