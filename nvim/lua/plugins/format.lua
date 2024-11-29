@@ -21,7 +21,7 @@ conform.setup({
         -- python = { "isort", "black" },
         python = { "ruff_format" },
         javascript = { "prettier" },
-        typescript = { "prettier" },
+        typescript = { "prettier", "eslint" },
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         svelte = { "prettier" },
@@ -39,12 +39,16 @@ conform.setup({
         ruby = { "rubocop" },
         -- ruby = { "rubyfmt" },
         -- ruby = { "rufo" },
+        sql = { "sql_formatter" },
     },
 
     formatters = {
         rubocop = {
             -- https://github.com/stevearc/conform.nvim/issues/369#issuecomment-2096944302
             args = { "-a", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+        },
+        sql_formatter = {
+            args = { "--language", "postgresql", "--config", '{"expressionWidth": 20}' }, -- expression width not working...
         },
     },
 
@@ -58,6 +62,11 @@ conform.setup({
     --     timeout_ms = 500,
     -- },
     format_on_save = function(bufnr)
+        -- DISABLE FOR NOW!!!!!! (since mobile codebase gets messed up)
+        if true then
+            return
+        end
+
         -- Disable format on save when custom variable is set (global or buffer-local)
         if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
             return

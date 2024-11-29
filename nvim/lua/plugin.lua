@@ -3,6 +3,7 @@
 --       - rainbow-delimiters.nvim https://github.com/HiPhish/rainbow-delimiters.nvim
 --      - vim-rails https://github.com/tpope/vim-rails
 --      - oil.nvim https://github.com/stevearc/oil.nvim
+--      - a bunch of stuff ->  https://github.com/echasnovski/mini.nvim
 -- TODO: Plugins to create
 --      - Plugin to show filename on buffer change
 --      - Plugin for volar that when doing goto definition, takes you to the actual component (vscode plugin: https://marketplace.visualstudio.com/items?itemName=antfu.goto-alias)
@@ -40,6 +41,31 @@ local plugins = {
         --     -- vim.api.nvim_set_hl(0, "DiffAdd", { ctermbg = 0, fg = "#FFFFFF", bg = "#FFFFFF" })
         --     -- vim.api.nvim_set_hl(0, "DiffAdd", { guibg = "#FFFFFF" })
         -- end,
+    },
+
+    {
+        "kdheepak/lazygit.nvim",
+        lazy = true,
+        cmd = {
+            "LazyGit",
+            "LazyGitConfig",
+            "LazyGitCurrentFile",
+            "LazyGitFilter",
+            "LazyGitFilterCurrentFile",
+        },
+        -- optional for floating window border decoration
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        -- setting the keybinding for LazyGit with 'keys' is recommended in
+        -- order to load the plugin when the command is run for the first time
+        keys = {
+            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+        },
+    },
+
+    {
+        "sindrets/diffview.nvim",
     },
 
     -- Open git files in github
@@ -115,6 +141,23 @@ local plugins = {
                     normal = "<leader>cs",
                 },
             },
+            -- below is for render-markdown
+            highlight_headers = false,
+            separator = "---",
+            error_header = "> [!ERROR] Error",
+        },
+    },
+
+    -- Render markdown within neovim
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        -- dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+        --@module 'render-markdown'
+        --@type render.md.UserConfig
+        opts = {
+            file_types = { "markdown", "copilot-chat" },
         },
     },
 
@@ -407,6 +450,7 @@ local plugins = {
                 -- "tsserver",
                 -- "emmet_language_server", -- HTML CSS
                 "terraformls", -- TODO: this seemingly takes over colofing, so in telescope it's treesitter, in-file it is this, so different syles...
+                "sqlls",
             },
 
             automatic_installation = true,

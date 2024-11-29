@@ -19,6 +19,7 @@ brew "gh"
 brew "pre-commit" # Required for gitleaks pre commit hook
 brew "gitleaks" # Secrets checking
 brew "git-delta"
+brew "jesseduffield/lazygit/lazygit"
 
 # neovim
 brew "neovim"
@@ -35,8 +36,9 @@ brew "goenv"
 brew "bat" # Alternative for "cat" command
 
 # terraform
-tap "hashicorp/tap"
-brew "hashicorp/tap/terraform"
+# tap "hashicorp/tap"
+# brew "hashicorp/tap/terraform"
+brew "tfenv"
 
 # GCP
 cask "google-cloud-sdk"
@@ -44,6 +46,9 @@ cask "google-cloud-sdk"
 # python
 brew "pyenv"
 brew "pyenv-virtualenv"
+
+# ruby
+brew "rbenv"
 
 # pnpm
 brew "pnpm"

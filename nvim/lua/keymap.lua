@@ -109,21 +109,31 @@ vim.keymap.set("n", "<leader><CR>", "a <Esc>", { desc = "[Basic] Insert space wh
 -- Yank
 -----------------------------------------------------------------------------
 
--- copy to system clipboard (already doing that without this)
--- vim.keymap.set("x", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
--- vim.keymap.set("v", "<leader>y", '"+y', { desc = "[Basic] Copy to sysytem clipboard" })
--- vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
-
--- yank stuff
-vim.keymap.set("n", "<leader>yf", '"+Y', { desc = "[Basic] Copy to sysytem clipboard" })
-
+-- Yank path to current file from git project root formatted with backticks
 vim.keymap.set(
     "n",
     "<leader>yf",
     ":CopyPath<Enter>",
     { desc = "[yank file path] Copy relative File path from git root (including git root)" }
 )
-vim.keymap.set("n", "<leader>ya", 'gg<S-v>G"+y<C-o>', { desc = "[yank all] Copy whole buffer to system clipboard" })
+
+-- Yank all text in crrent buffer
+vim.keymap.set("n", "<leader>ya", 'gg<S-v>G"+y<C-o>', { desc = "[yank] yank all text" })
+
+-- Yank GitHub file path to current file
+vim.keymap.set("n", "<leader>ygf", function()
+    vim.cmd("OpenInGHFile +")
+end, { desc = "[yank] yank github file path" })
+
+-- Yank GitHub permalink to current line
+vim.keymap.set("n", "<leader>ygl", function()
+    vim.cmd("OpenInGHFileLines +")
+end, { desc = "[yank] yank github permalink to current line" })
+
+-- Yank GitHub permalink to current lines
+vim.keymap.set("v", "<leader>ygl", function()
+    vim.cmd("'<,'>OpenInGHFileLines +")
+end, { desc = "[yank] yank github permalink to selected lines" })
 
 -- Yank highlighted text and keep cursor at its position
 vim.keymap.set("v", "y", "ygv<Esc>")
@@ -403,12 +413,14 @@ vim.keymap.set("n", "<leader>st", function()
 end, { desc = "[Telescope] Search Telescope (open telescope options)" })
 
 -- open file browser (extension for telescope)
-vim.keymap.set(
-    "n",
-    "<leader>sv",
-    ":Telescope file_browser files=false<CR>",
-    { silent = true, desc = "[Telescope] Use Telescope file browser" }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>sv",
+--     ":Telescope file_browser files=false<CR>",
+--     { silent = true, desc = "[Telescope] Use Telescope file browser" }
+-- )
+vim.keymap.set("n", "<space>sv", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
+
 
 -- open file browser (extension for telescope) -- Starting at current directory
 -- vim.keymap.set('n', '<leader>sv', ":Telescope file_browser path=%:p:h select_buffer=true<CR>",

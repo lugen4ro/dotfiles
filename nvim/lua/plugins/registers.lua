@@ -1,12 +1,3 @@
--- TODO: clear_highlighted_register() does clear, but after restarting nvim, it's back to the old value
--- Relevant code https://github.com/tversteeg/registers.nvim/blob/22bb98f93a423252fffeb3531f7bc12a3e07b63f/lua/registers.lua#L501
--- It seems vim.fn.setreg("register_here", "") does only set the value temporarily
--- When overriding with another non-empty value like vim.fn.setreg("register_here", " "), the change persists
--- after hook can be passed to clear_highlighted_register as option, but the hook doesn't get the selected register passed
--- So for now, overwrite the source code
--- Before --> vim.fn.setreg(register_info.register, '')
--- After --> vim.fn.setreg(register_info.register, ' ')
-
 local registers = require("registers")
 registers.setup({
     -- Show these registers in the order of the string

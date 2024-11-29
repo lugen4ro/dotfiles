@@ -77,3 +77,5 @@
     paging = auto ; <auto|always|never>
     ; hunk-label = aaaa
 
+[http]
+	cookiefile = /Users/lukasgenshiro.nakamura/.gitcookies

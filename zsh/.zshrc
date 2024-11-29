@@ -50,7 +50,7 @@ alias dotfiles="cd ~/.dotfiles"
 alias nv="cd ~/.dotfiles/nvim/ && vi lua/plugin.lua"
 
 # Open windows file explorer
-alias open="explorer.exe ."
+# alias open="explorer.exe ."
 
 # ls alias
 alias l="ls -l"

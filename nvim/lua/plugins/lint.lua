@@ -14,6 +14,7 @@ lint.linters_by_ft = {
     -- python = { "pylint" },
     -- python = { "mypy", "ruff" },
     python = { "ruff" },
+    sql = { "sqlfluff" },
 }
 
 local lint_progress = function()

@@ -111,22 +111,22 @@ vim.opt.encoding = "utf-8"
 -----------------------------------------------------------------------------
 
 vim.diagnostic.config({
-	virtual_text = {
-		source = true, -- Show source (e.g. Pyright etc.)
-		format = function(diagnostic)
-			if diagnostic.user_data and diagnostic.user_data.code then
-				return string.format("%s %s", diagnostic.user_data.code, diagnostic.message)
-			else
-				return diagnostic.message
-			end
-		end,
-	},
-	signs = true,
-	float = {
-		header = "Diagnostics",
-		source = true,
-		border = "rounded",
-	},
+    virtual_text = {
+        source = true, -- Show source (e.g. Pyright etc.)
+        format = function(diagnostic)
+            if diagnostic.user_data and diagnostic.user_data.code then
+                return string.format("%s %s", diagnostic.user_data.code, diagnostic.message)
+            else
+                return diagnostic.message
+            end
+        end,
+    },
+    signs = true,
+    float = {
+        header = "Diagnostics",
+        source = true,
+        border = "rounded",
+    },
 })
 
 -----------------------------------------------------------------------------
@@ -146,6 +146,9 @@ vim.opt.updatetime = 50
 -- recognize python3_host_prog to pass checkhealth
 vim.g.python3_host_prog = "/usr/bin/python3"
 
+-- Make openingh commands not open the url but only store them in register
+vim.g.openingh_copy_to_register = true
+
 -----------------------------------------------------------------------------
 -- WSL Ubuntu specific
 -----------------------------------------------------------------------------
@@ -153,14 +156,14 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 -- Copy yank content to the system clipboard (but not deletes)
 local clip = "/mnt/c/Windows/System32/clip.exe"
 if vim.fn.executable(clip) == 1 then
-	vim.api.nvim_create_augroup("WSLYank", { clear = true })
-	vim.api.nvim_create_autocmd("TextYankPost", {
-		group = "WSLYank",
-		pattern = "*",
-		callback = function()
-			if vim.v.event.operator == "y" then
-				vim.fn.system(clip, vim.fn.getreg("0"))
-			end
-		end,
-	})
+    vim.api.nvim_create_augroup("WSLYank", { clear = true })
+    vim.api.nvim_create_autocmd("TextYankPost", {
+        group = "WSLYank",
+        pattern = "*",
+        callback = function()
+            if vim.v.event.operator == "y" then
+                vim.fn.system(clip, vim.fn.getreg("0"))
+            end
+        end,
+    })
 end
